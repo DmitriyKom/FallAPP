@@ -16,7 +16,14 @@ function build_calendar($month, $year) {
   $dayOfWeek = $dateComponents['wday'];
 
   // Current date
+
+
+
+
+
+
   $dateToday = date('Y-m-d');
+
 
 
   $calendar = "<table class='table table-bordered'>";
@@ -32,17 +39,27 @@ function build_calendar($month, $year) {
   $calendar .= "<tr>";
 
   // Calendar Headers
+
   foreach ($daysOfWeek as $day) {
     $calendar .= "<th class='header'>$day</th>";
   }
 
 
+
+
+
   $currentDay = 1;
+
   $calendar .= "</tr><tr>";
+
+
+
+
 
   if($dayOfWeek > 0) {
     for ($i=0; $i < $dayOfWeek; $i++) {
       $calendar .= "<td class='empty'></td>";
+
     }
   }
 
@@ -50,11 +67,16 @@ function build_calendar($month, $year) {
   $month = str_pad($month,2,"0",STR_PAD_LEFT);
 
   while ($currentDay <= $numberDays) {
+
     //start new row at seventh col
+
     if ($dayOfWeek == 7) {
+
       $dayOfWeek = 0;
       $calendar .= "</tr><tr>";
+
     }
+
       $currentDayRel = str_pad($currentDay,2,"0",STR_PAD_LEFT);
       $date = "$year-$month-$currentDayRel";
 
@@ -64,7 +86,7 @@ function build_calendar($month, $year) {
       if ($date<date('Y-m-d')) {
         $calendar.="<td><h4>$currentDay</h4><button class='btn btn-danger btn-xs'>N/A</button>";
       }else {
-        $calendar.="<td class='$today'><h4>$currentDay</h4><a href=''
+        $calendar.="<td class='$today'><h4>$currentDay</h4><a href='book.php?date=".$date."'
           class='btn btn-success btn-xs'>Book</a>";
       }
 
@@ -87,4 +109,4 @@ function build_calendar($month, $year) {
 
   echo $calendar;
 }
- ?>
+?>

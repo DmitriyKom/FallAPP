@@ -231,15 +231,3 @@ input[type=submit]{
   border-radius: 4px;
   cursor: pointer;
 }
-
-table {
-  table-layout: fixed;
-}
-
-td {
-  width: 33%;
-}
-
-.today {
-  background: yellow;
-}
