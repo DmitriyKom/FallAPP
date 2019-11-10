@@ -1,5 +1,5 @@
-<?php require_once('../private/initialize.php'); ?>
-<?php require_once('../private/calendar_functions.php'); ?>
+<?php require_once('../../private/initialize.php'); ?>
+<?php require_once('../../private/calendar_functions.php'); ?>
 
 <?php $page_title = 'Appointments'; ?>
 <?php include(SHARED_PATH . '/metromed_header.php'); ?>
