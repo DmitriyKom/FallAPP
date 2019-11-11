@@ -45,6 +45,22 @@ body {
   padding-bottom: 10%;
 }
 
+.careers-bg-cover {
+  background: url('images/careers.jpg') no-repeat center center;
+  background-position: 0% 20%;
+  background-size: cover;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.community2-bg-cover {
+  background: url('images/community2.jpg') no-repeat center center;
+  background-position: 0% 50%;
+  background-size: cover;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
