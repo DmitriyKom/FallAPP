@@ -1,12 +1,10 @@
 <?php require_once('../private/initialize.php'); ?>
 
-<?php $page_title = 'Appointments'; ?>
+<?php $page_title = 'Community'; ?>
 <?php include(SHARED_PATH . '/metromed_header.php'); ?>
 
 
-<div class="">
 
-</div>
 
 
 

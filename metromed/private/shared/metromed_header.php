@@ -28,7 +28,7 @@ if (!isset($page_title)) {
            <a class="text-muted">145 West 29th Street, Suite 451 <br>St Paul, MN 55012</a>
          </div>
          <div class="col-4 text-center">
-           <a class="site-header-logo text-dark" href="index.php">Metro Medical Center</a>
+           <a class="site-header-logo text-dark" href="<?php echo url_for('index.php') ?>">Metro Medical Center</a>
          </div>
          <div class="col-4 d-flex justify-content-end align-items-center">
            <a class="btn btn-sm btn-primary" href="login.php">Login</a>
@@ -38,11 +38,11 @@ if (!isset($page_title)) {
 
      <div class="nav-scroller py-1 mb-2">
        <nav class="nav d-flex justify-content-between">
-         <a class="p-2 text-primary" href="about.php">About</a>
-         <a class="p-2 text-primary" href="services.php">Services</a>
-         <a class="p-2 text-primary" href="careers.php">Careers</a>
-         <a class="p-2 text-primary" href="community.php">Community</a>
-         <a class="p-2 text-primary" href="contact.php">Contact</a>
+         <a class="p-2 text-primary" href="<?php echo url_for('about.php') ?>">About</a>
+         <a class="p-2 text-primary" href="<?php echo url_for('services.php') ?>">Services</a>
+         <a class="p-2 text-primary" href="<?php echo url_for('careers.php') ?>">Careers</a>
+         <a class="p-2 text-primary" href="<?php echo url_for('community.php') ?>">Community</a>
+         <a class="p-2 text-primary" href="<?php echo url_for('contact.php') ?>">Contact</a>
 
        </nav>
      </div>
