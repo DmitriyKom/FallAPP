@@ -7,7 +7,7 @@
 
     <div class="jumbotron jumbotron main-bg-cover">
       <h1>Welcome</h1>
-      <p><a class="btn btn-lg btn-primary" href="appointment.php">Schedule an appointment</a></p>
+      <p><a class="btn btn-lg btn-primary" href="booking/appointment.php">Schedule an appointment</a></p>
     </div>
 
     <div class="row mb-2">
