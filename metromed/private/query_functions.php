@@ -20,21 +20,21 @@
     confirm_result_set($result);
     $patient = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
-    return $patient; // returns an assoc. array
+    return $patient; // returns an assoc
   }
 
-  function insert_subject($subject) {
+  function create_patient($patient) {
     global $db;
 
-    $sql = "INSERT INTO subjects ";
+    $sql = "INSERT INTO user_info ";
     $sql .= "(menu_name, position, visible) ";
     $sql .= "VALUES (";
-    $sql .= "'" . $subject['menu_name'] . "',";
-    $sql .= "'" . $subject['position'] . "',";
-    $sql .= "'" . $subject['visible'] . "'";
+    $sql .= "'" . $patient['menu_name'] . "',";
+    $sql .= "'" . $patient['position'] . "',";
+    $sql .= "'" . $patient['visible'] . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
-    // For INSERT statements, $result is true/false
+    // The result of INSERT statements is true/false
     if($result) {
       return true;
     } else {
@@ -45,18 +45,18 @@
     }
   }
 
-  function update_subject($subject) {
+  function update_patient($patient) {
     global $db;
 
-    $sql = "UPDATE subjects SET ";
-    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
-    $sql .= "position='" . $subject['position'] . "', ";
-    $sql .= "visible='" . $subject['visible'] . "' ";
-    $sql .= "WHERE id='" . $subject['id'] . "' ";
+    $sql = "UPDATE user_info SET ";
+    $sql .= "menu_name='" . $patient['menu_name'] . "', ";
+    $sql .= "position='" . $patient['position'] . "', ";
+    $sql .= "visible='" . $patient['visible'] . "' ";
+    $sql .= "WHERE id='" . $patient['id'] . "' ";
     $sql .= "LIMIT 1";
 
     $result = mysqli_query($db, $sql);
-    // For UPDATE statements, $result is true/false
+    // The result of UPDATE statements is true/false
     if($result) {
       return true;
     } else {
