@@ -7,8 +7,8 @@ $email = "";
 $password = "";
 $role = "";
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_USERNAME', 'fallappuser');
+define('DB_PASSWORD', '1233');
 define('DB_NAME', 'fallapp');
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -45,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     header("location: contact.php");
                                     break;
                                 default:
-                                    header("location: .php");}
+                                    header("location: index.php");}
                         } else{
                             echo "The password you entered was not valid.";
                         }
@@ -75,11 +75,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
-        <a href="Register.php">Register account</a>
+        <a href="register.php">Register account</a>
     </form>
 
 
 
 
-    
+
 <?php include(SHARED_PATH . '/metromed_footer.php'); ?>

@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS FallApp;
+DROP DATABASE IF EXISTS fallapp;
 
-Create DATABASE FallApp;
+Create DATABASE fallapp;
 
 CREATE TABLE insurance (
     ins_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -18,9 +18,9 @@ CREATE TABLE user_info (
     zip varchar(50) NOT NULL,
     phone_number bigint NOT NULL,
     SSN bigint NOT NULL,
-    birth_dt DATE  NOT NULL,
-    ins_id int  NOT NULL,
-    policy_number varchar(50) NOT NULL,
+    birth_dt DATE,
+    ins_id int NOT NULL,
+    policy_number varchar(50),
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE user (
     email varchar(50) NOT NULL UNIQUE KEY,
     password varchar(255) NOT NULL,
     role varchar(15) DEFAULT NULL,
-    enabled int NOT NULL,
+    enabled int DEFAULT NULL,
     FOREIGN KEY (user_id) REFERENCES user_info(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
