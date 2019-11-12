@@ -1,13 +1,7 @@
 <?php require_once('../private/initialize.php');
 include(SHARED_PATH . '/metromed_header.php');
-session_start();
 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'fallappuser');
-define('DB_PASSWORD', '1233');
-define('DB_NAME', 'fallapp');
-/* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+global $db;
 $email = "";
 $password = "";
 $first_name = "";
@@ -21,7 +15,7 @@ $phone = "";
 $SSN = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT ssn FROM user_info WHERE ssn = '".trim($_POST["SSN"])."'";
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($db, $sql)) {
             $param_email = trim($_POST["SSN"]);;
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_store_result($stmt);
@@ -36,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     $sql = "SELECT email FROM user WHERE email = '".trim($_POST["email"])."'";
-    if ($stmt = mysqli_prepare($link, $sql)) {
+    if ($stmt = mysqli_prepare($db, $sql)) {
         $param_email = trim($_POST["email"]);;
         if (mysqli_stmt_execute($stmt)) {
             mysqli_stmt_store_result($stmt);
@@ -64,15 +58,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES('". $first_name."','".$last_name."','".$middle_name."','".$address ."','".
             $city ."','". $state ."','". $zipcode ."',". $phone .",". $SSN .", 1 )";
         // echo $insert_user_info_query;
-        if (mysqli_query($link, $insert_user_info_query)) {
+        if (mysqli_query($db, $insert_user_info_query)) {
             //echo "Users Information added successfully";
         } else {
             echo "ERROR: Could not able to execute sql1. "
-                . mysqli_error($link);
+                . mysqli_error($db);
             return false;
         };
     $sql = "SELECT user_id FROM user_info WHERE SSN =".$SSN;
-    if ($stmt = mysqli_prepare($link, $sql)) {
+    if ($stmt = mysqli_prepare($db, $sql)) {
         $param_email = trim($_POST["email"]);
         if (mysqli_stmt_execute($stmt)) {
             mysqli_stmt_store_result($stmt);
@@ -82,11 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["user_id"] = $user_id;
                     $insert_user_query = "INSERT INTO user(user_id, email, password) VALUES(
                 " . $user_id . "," . '"' . $email . '"' . "," . '"' . $password . '"' . ")";
-                    if (mysqli_query($link, $insert_user_query)) {
+                    if (mysqli_query($db, $insert_user_query)) {
                         echo "Thank you for registering";
                     } else {
                         echo "ERROR: Could not able to execute sql2. "
-                            . mysqli_error($link);
+                            . mysqli_error($db);
                         return false;
                     };
                 }
@@ -94,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         return true;
     }//end of addUsers_Info function
-    mysqli_close($link);
+    mysqli_close($db);
 }
 ?>
 
@@ -116,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password"  name="SSN" id="inputPassword" class="form-control" placeholder="SSN" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
-    <a href="Register.php">Register account</a>
+    <a href="register.php">Register account</a>
 </form>
 
 

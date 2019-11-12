@@ -248,14 +248,53 @@ input[type=submit]{
   cursor: pointer;
 }
 
-table {
+/* table {
   table-layout: fixed;
-}
+} */
 
-td {
+/* td {
   width: 33%;
-}
+} */
 
 .today {
   background: yellow;
+}
+
+#content {
+  width: 920px;
+  min-height: 500px;
+  padding: 0 30px;
+}
+
+/* Actions */
+
+.actions {
+  margin-bottom: 1em;
+}
+
+
+/* Lists */
+
+table {
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+table.list {
+  width: 100%;
+}
+
+table.list tr td {
+  border: 1px solid #999999;
+}
+
+table.list tr th {
+  border: 1px solid #0055DD;
+  background: #0055DD;
+  /* color: #fff; */
+  /* background: #00003E; */
+  /* background: -webkit-linear-gradient(to right, #31BDE6, #00003E);
+  background: linear-gradient(to right, #31BDE6, #00003E); */
+  color: white;
+  text-align: left;
 }

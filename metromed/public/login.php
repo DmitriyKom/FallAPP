@@ -2,16 +2,13 @@
 
 <?php $page_title = 'Metro Medical Center'; ?>
 <?php include(SHARED_PATH . '/metromed_header.php');
-session_start();
+
+
 $email = "";
 $password = "";
 $role = "";
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'fallappuser');
-define('DB_PASSWORD', '1233');
-define('DB_NAME', 'fallapp');
-/* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+global $db;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["Email"]))){
         $email_err = "Please enter email address.";
@@ -24,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
         $sql = "SELECT user_id, email, password, role FROM user WHERE email ='".$email."'";
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($stmt = mysqli_prepare($db, $sql)){
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) == 1){
@@ -58,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
         mysqli_stmt_close($stmt);
-        mysqli_close($link);
+        mysqli_close($db);
 }
 ?>
 
