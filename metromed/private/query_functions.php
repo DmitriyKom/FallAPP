@@ -23,18 +23,27 @@
     return $patient; // returns an assoc
   }
 
-  function create_patient($patient) {
+  function create_patient($first_name, $last_name, $middle_name, $address, $city, $state, $zip, $phone_number, $SSN, $birth_dt, $ins_id, $policy_number) {
     global $db;
 
     $sql = "INSERT INTO user_info ";
-    $sql .= "(menu_name, position, visible) ";
+    $sql .= "(first_name, last_name, middle_name, address, city, state, zip, phone_number, SSN, birth_dt, ins_id, policy_number) ";
     $sql .= "VALUES (";
-    $sql .= "'" . $patient['menu_name'] . "',";
-    $sql .= "'" . $patient['position'] . "',";
-    $sql .= "'" . $patient['visible'] . "'";
+    $sql .= "'" . $first_name . "',";
+    $sql .= "'" . $last_name . "',";
+    $sql .= "'" . $middle_name . "',";
+    $sql .= "'" . $address . "',";
+    $sql .= "'" . $city . "',";
+    $sql .= "'" . $state . "',";
+    $sql .= "'" . $zip . "',";
+    $sql .= "'" . $phone_number . "',";
+    $sql .= "'" . $SSN . "',";
+    $sql .= "'" . $birth_dt . "',";
+    $sql .= "'" . $ins_id . "',";
+    $sql .= "'" . $policy_number . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
-    // The result of INSERT statements is true/false
+    // Result is BOOL
     if($result) {
       return true;
     } else {
