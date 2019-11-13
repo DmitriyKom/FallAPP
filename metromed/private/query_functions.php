@@ -23,32 +23,53 @@
     return $patient; // returns an assoc
   }
 
-  function create_patient($first_name, $last_name, $middle_name, $address, $city, $state, $zip, $phone_number, $SSN, $birth_dt, $ins_id, $policy_number) {
+  function create_patient($f_name, $l_name, $m_name, $address, $city, $state, $zip, $phone_number, $dob, $ins_id, $policy_number, $email, $password, $role, $enabled) {
     global $db;
 
     $sql = "INSERT INTO user_info ";
-    $sql .= "(first_name, last_name, middle_name, address, city, state, zip, phone_number, SSN, birth_dt, ins_id, policy_number) ";
+    $sql .= "(f_name, l_name, m_name, address, city, state, zip, phone_number, dob, ins_id, policy_number) ";
     $sql .= "VALUES (";
-    $sql .= "'" . $first_name . "',";
-    $sql .= "'" . $last_name . "',";
-    $sql .= "'" . $middle_name . "',";
+    $sql .= "'" . $f_name . "',";
+    $sql .= "'" . $l_name . "',";
+    $sql .= "'" . $m_name . "',";
     $sql .= "'" . $address . "',";
     $sql .= "'" . $city . "',";
     $sql .= "'" . $state . "',";
     $sql .= "'" . $zip . "',";
     $sql .= "'" . $phone_number . "',";
-    $sql .= "'" . $SSN . "',";
-    $sql .= "'" . $birth_dt . "',";
+    $sql .= "'" . $dob . "',";
     $sql .= "'" . $ins_id . "',";
     $sql .= "'" . $policy_number . "'";
-    $sql .= ")";
-    $result = mysqli_query($db, $sql);
+    $sql .= "); ";
+        echo $sql;
+    $result1 = mysqli_query($db, $sql);
     // Result is BOOL
-    if($result) {
+
+    $sql2 = "INSERT INTO user ";
+    $sql2 .= "(email, password, role, enabled) ";
+    $sql2 .= "VALUES (";
+    $sql2 .= "'" . $email . "',";
+    $sql2 .= "'" . $password . "',";
+    $sql2 .= "'" . $role . "',";
+    $sql2 .= "'" . $enabled . "'";
+    $sql2 .= ");";
+        echo $sql2;
+    $result2 = mysqli_query($db, $sql2);
+
+
+    if($result1 == true && $result2 == true) {
       return true;
-    } else {
+    } elseif($result1 == true && $result2 == false) {
+      echo mysqli_error($db) . " on query 2. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }elseif ($result1 == false && $result2 == true) {
+      echo mysqli_error($db) . "on query 1. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }else{
       // INSERT failed
-      echo mysqli_error($db);
+      echo mysqli_error($db) . "on both queries. Value of \$enabled: $enabled";
       db_disconnect($db);
       exit;
     }

@@ -31,9 +31,9 @@
       <?php while($patient = mysqli_fetch_assoc($patient_set)) { ?>
         <tr>
           <td><?php echo h($patient['user_id']); ?></td>
-          <td><?php echo h($patient['first_name']); ?></td>
-          <td><?php echo h($patient['last_name']); ?></td>
-    	    <td><?php echo h($patient['middle_name']); ?></td>
+          <td><?php echo h($patient['f_name']); ?></td>
+          <td><?php echo h($patient['l_name']); ?></td>
+    	    <td><?php echo h($patient['m_name']); ?></td>
           <td><?php echo h($patient['phone_number']); ?></td>
 
           <td><a class="action" href="<?php echo url_for('/administrator/patients/view.php?user_id=' . h(u($patient['user_id']))); ?>">View</a></td>
