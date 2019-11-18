@@ -228,34 +228,87 @@ h1, h2, h3, h4, h5, h6 {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-input[type=text], select {
+input[type=text], input[type=tel], input[type=date], input[type=password], select {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-bottom: .5rem;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
-input[type=submit]{
+input[type=submit] {
   width: 100%;
   background-color: #4caf50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin-bottom: .5rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-table {
-  table-layout: fixed;
+input[type=checkbox] {
+  display: inline-block;
+  margin-right: 90%;
 }
 
-td {
+/* table {
+  table-layout: fixed;
+} */
+
+/* td {
   width: 33%;
-}
+} */
 
 .today {
   background: yellow;
+}
+
+#content {
+  width: 920px;
+  min-height: 500px;
+  padding: 0 30px;
+}
+
+/* Actions */
+
+.actions {
+  margin-bottom: 1em;
+}
+
+
+/* Lists */
+
+table {
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+table.list {
+  width: 100%;
+}
+
+table.list tr td {
+  border: 1px solid #999999;
+}
+
+table.list tr th {
+  border: 1px solid #0055DD;
+  background: #0055DD;
+  /* color: #fff; */
+  /* background: #00003E; */
+  /* background: -webkit-linear-gradient(to right, #31BDE6, #00003E);
+  background: linear-gradient(to right, #31BDE6, #00003E); */
+  color: white;
+  text-align: left;
+}
+
+.label{
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+input{
+
 }
