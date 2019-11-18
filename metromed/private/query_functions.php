@@ -99,23 +99,45 @@
     $sql .= "phone_number='" . $patient['phone_number'] . "', ";
     $sql .= "dob='" . $patient['dob'] . "', ";
     $sql .= "ins_id='" . $patient['ins_id'] . "', ";
-    $sql .= "policy_number='" . $patient['policy_number'] . "', ";
-    $sql .= "email='" . $patient['email'] . "', ";
-    $sql .= "role='" . $patient['role'] . "', ";
-    $sql .= "enabled='" . $patient['enabled'] . "' ";
+    $sql .= "policy_number='" . $patient['policy_number'] . "' ";
     $sql .= "WHERE user_id='" . $patient['user_id'] . "' ";
-    $sql .= "LIMIT 1";
+    $sql .= "LIMIT 1; ";
+    echo $sql;
+    $result1 = mysqli_query($db, $sql);
 
-    $result = mysqli_query($db, $sql);
-    // The result of UPDATE statements is true/false
-    if($result) {
+    $sql2 = "UPDATE user SET ";
+    $sql2 .= "email='" . $patient['email'] . "', ";
+    $sql2 .= "role='" . $patient['role'] . "', ";
+    $sql2 .= "enabled='" . $patient['enabled'] . "' ";
+    $sql2 .= "WHERE user_id='" . $patient['user_id'] . "' ";
+    $sql2 .= "LIMIT 1;";
+    echo $sql2;
+    $result2 = mysqli_query($db, $sql2);
+
+    if($result1 == true && $result2 == true) {
       return true;
-    } else {
-      // UPDATE failed
-      echo mysqli_error($db);
+    } elseif($result1 == true && $result2 == false) {
+      echo mysqli_error($db) . " on query 2. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }elseif ($result1 == false && $result2 == true) {
+      echo mysqli_error($db) . "on query 1. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }else{
+      // INSERT failed
+      echo mysqli_error($db) . "on both queries. Value of \$enabled: $enabled";
       db_disconnect($db);
       exit;
     }
+    // if($result) {
+    //   return true;
+    // } else {
+    //   // UPDATE failed
+    //   echo mysqli_error($db);
+    //   db_disconnect($db);
+    //   exit;
+    // }
 
   }
 

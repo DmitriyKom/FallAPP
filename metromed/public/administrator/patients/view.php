@@ -3,9 +3,9 @@
 
 <?php
 // $id = isset($_GET['id']) ? $_GET['id'] : '1';
-$id = $_GET['user_id'] ?? '1'; // PHP > 7.0
+$user_id = $_GET['user_id'] ?? '1'; // PHP > 7.0
 
-$patient = find_patient_by_id($id);
+$patient = find_patient_by_id($user_id);
 
 ?>
 

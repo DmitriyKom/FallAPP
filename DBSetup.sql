@@ -5,7 +5,7 @@ Create DATABASE fallapp;
 CREATE TABLE insurance (
     ins_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ins_co varchar(50)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE user_info (
     user_id int NOT NULL AUTO_INCREMENT ,
@@ -32,7 +32,7 @@ CREATE TABLE user (
     enabled int DEFAULT NULL,
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES user_info(user_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE appointment (
     app_id int NOT NULL AUTO_INCREMENT,
@@ -43,20 +43,20 @@ CREATE TABLE appointment (
     PRIMARY KEY (app_id),
     FOREIGN KEY (user_id) REFERENCES user_info(user_id),
     FOREIGN KEY (doc_id) REFERENCES user_info(user_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE service (
     service_id int NOT NULL AUTO_INCREMENT,
     service varchar(100),
     service_amount int,
     PRIMARY KEY (service_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE clinic (
     clinic_id int NOT NULL AUTO_INCREMENT,
     clinic_name varchar(100),
     PRIMARY KEY (clinic_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE preference (
     pref_id int NOT NULL AUTO_INCREMENT,
@@ -73,7 +73,7 @@ CREATE TABLE preference (
     FOREIGN KEY (service_id_1) REFERENCES service(service_id),
     FOREIGN KEY (service_id_2) REFERENCES service(service_id),
     FOREIGN KEY (service_id_3) REFERENCES service(service_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 
 CREATE TABLE clinic_services (
@@ -83,7 +83,7 @@ CREATE TABLE clinic_services (
     PRIMARY KEY (cs_id),
     FOREIGN KEY (service_id) REFERENCES service(service_id),
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE payments (
     payment_id int NOT NULL AUTO_INCREMENT,
@@ -93,7 +93,7 @@ CREATE TABLE payments (
     ins_id int,
     PRIMARY KEY (payment_id),
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE bill (
     bill_id int NOT NULL AUTO_INCREMENT,
@@ -108,7 +108,7 @@ CREATE TABLE bill (
     FOREIGN KEY (service_id) REFERENCES service(service_id),
     FOREIGN KEY (payment_id) REFERENCES payments(payment_id),
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO insurance (ins_id, ins_co)
 VALUES (1, "Medica"),
@@ -123,7 +123,6 @@ INSERT INTO user_info(
     state,
     zip,
     phone_number,
-    ssn,
     dob,
     ins_id,
     policy_number
@@ -138,7 +137,6 @@ VALUES(
     "",
     55426,
     9522017106,
-    555667777,
     "2019-11-11",
     1,
     "4567890"

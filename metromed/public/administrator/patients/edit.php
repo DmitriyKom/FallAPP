@@ -23,7 +23,9 @@ if (is_post()) {
   $patient['policy_number'] = $_POST['policy_number'] ?? '';
   $patient['email'] = $_POST['email'] ?? '';
   $patient['role'] = $_POST['role'] ?? '';
-  $patient['enabled'] = $_POST['enabled'] ?? '';
+  $patient['enabled'] = (empty($_POST['enabled'])) ? "0" : "1";
+  // $patient['enabled'] = $_POST['enabled'] ?? '';
+  // $enabled = (empty($_POST['enabled'])) ? "0" : $_POST['enabled'];
 
   $result = update_patient($patient);
   redirect_to(url_for('/administrator/patients/view.php?user_id=' . $user_id));
@@ -47,7 +49,7 @@ if (is_post()) {
   <div class="subject show">
     <h1>Patient Details: <?php echo h($patient['f_name'] . " " . $patient['l_name'] ); ?></h1>
 
-    <form action="<?php echo url_for('/administrator/patients/edit.php?user_id=' . h(u($id))); ?>" method="post">
+    <form action="<?php echo url_for('/administrator/patients/edit.php?user_id=' . h(u($user_id))); ?>" method="post">
       <div class="attributes">
         <dl>
           <dt>First Name</dt>
@@ -95,7 +97,7 @@ if (is_post()) {
         </dl>
         <dl>
           <dt>Email Address</dt>
-          <dd><input type="text" name='email' value="<?php echo h($patient['email'] ?? 'false'); ?>" /></dd>
+          <dd><input type="text" name='email' value="<?php echo h($patient['email']); ?>" /></dd>
         </dl>
         <dl>
           <dt>User Role</dt>
@@ -109,7 +111,14 @@ if (is_post()) {
         </dl>
         <dl>
           <dt>Enabled</dt>
-          <dd><input type="checkbox" name='enabled' value="<?php echo h($patient['enabled']); ?>" /></dd>
+          <?php
+          if ($patient['enabled'] == 1) {
+            echo '<dd><input type="checkbox" name="enabled" value="1" checked="true" /></dd>';
+          } else {
+            echo '<dd><input type="checkbox" name="enabled" /></dd>';
+          }
+          ?>
+
         </dl>
         <div id="operations">
           <input type="submit" value="Edit Subject" />
