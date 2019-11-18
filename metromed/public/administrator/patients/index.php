@@ -38,7 +38,7 @@
 
           <td><a class="action" href="<?php echo url_for('/administrator/patients/view.php?user_id=' . h(u($patient['user_id']))); ?>">View</a></td>
           <td><a class="action" href="<?php echo url_for('/administrator/patients/edit.php?user_id=' . h(u($patient['user_id']))); ?>">Edit</a></td>
-          <td><a class="action" href="<?php echo url_for('/administrator/patients/delete.php?user_id=' . h(u($patient['user_id']))); ?>">Delete</a></td>
+          <td><a class="action" href="<?php echo url_for('/administrator/patients/remove.php?user_id=' . h(u($patient['user_id']))); ?>">Delete</a></td>
     	  </tr>
       <?php } ?>
   	</table>
