@@ -14,13 +14,23 @@
   function find_patient_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM user_info ";
-    $sql .= "WHERE user_id='" . $id . "'";
+    // $sql = "SELECT * FROM user_info ";
+    // $sql .= "WHERE user_id='" . $id . "'";
+    // $result = mysqli_query($db, $sql);
+    // confirm_result_set($result);
+    // $patient = mysqli_fetch_assoc($result);
+    // mysqli_free_result($result);
+    // return $patient; // returns an assoc
+
+    $sql = "SELECT i.*, u.email, u.role, u.enabled FROM user_info AS i, user AS u ";
+    $sql .= "WHERE i.user_id='" . $id . "'" . " AND u.user_id='" . $id . "'";
     $result = mysqli_query($db, $sql);
+    echo $sql;
     confirm_result_set($result);
     $patient = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
     return $patient; // returns an assoc
+
   }
 
   function create_patient($f_name, $l_name, $m_name, $address, $city, $state, $zip, $phone_number, $dob, $ins_id, $policy_number, $email, $password, $role, $enabled) {
@@ -79,10 +89,21 @@
     global $db;
 
     $sql = "UPDATE user_info SET ";
-    $sql .= "menu_name='" . $patient['menu_name'] . "', ";
-    $sql .= "position='" . $patient['position'] . "', ";
-    $sql .= "visible='" . $patient['visible'] . "' ";
-    $sql .= "WHERE id='" . $patient['id'] . "' ";
+    $sql .= "f_name='" . $patient['f_name'] . "', ";
+    $sql .= "l_name='" . $patient['l_name'] . "', ";
+    $sql .= "m_name='" . $patient['m_name'] . "', ";
+    $sql .= "address='" . $patient['address'] . "', ";
+    $sql .= "city='" . $patient['city'] . "', ";
+    $sql .= "state='" . $patient['state'] . "', ";
+    $sql .= "zip='" . $patient['zip'] . "', ";
+    $sql .= "phone_number='" . $patient['phone_number'] . "', ";
+    $sql .= "dob='" . $patient['dob'] . "', ";
+    $sql .= "ins_id='" . $patient['ins_id'] . "', ";
+    $sql .= "policy_number='" . $patient['policy_number'] . "', ";
+    $sql .= "email='" . $patient['email'] . "', ";
+    $sql .= "role='" . $patient['role'] . "', ";
+    $sql .= "enabled='" . $patient['enabled'] . "' ";
+    $sql .= "WHERE user_id='" . $patient['user_id'] . "' ";
     $sql .= "LIMIT 1";
 
     $result = mysqli_query($db, $sql);
