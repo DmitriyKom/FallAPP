@@ -1,9 +1,9 @@
 <?php
+session_start();
+
 if (!isset($page_title)) {
   $page_title = 'Metromed Home';
 }
-
-session_start();
 
  ?>
 

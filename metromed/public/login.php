@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                            echo $email." ".$password;
                             $_SESSION["loggedin"] = true;
                             $_SESSION["user_id"] = $user_id;
-                            $_SESSION["Email"] = $email;
+                            $_SESSION["email"] = $email;
                             $_SESSION["role"] = $role;
                             switch($role){
                                 case "Customer":

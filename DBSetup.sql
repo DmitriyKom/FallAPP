@@ -1,6 +1,8 @@
-DROP DATABASE IF EXISTS fallapp;
+-- DROP DATABASE IF EXISTS fallapp;
 
-Create DATABASE fallapp;
+-- Create DATABASE fallapp;
+
+USE ics325fa1919;
 
 CREATE TABLE insurance (
     ins_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
