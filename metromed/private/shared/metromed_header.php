@@ -34,7 +34,20 @@ if (!isset($page_title)) {
            <a class="site-header-logo text-dark" href="<?php echo url_for('index.php') ?>">Metro Medical Center</a>
          </div>
          <div class="col-4 d-flex justify-content-end align-items-center">
-           <a class="btn btn-sm btn-primary" href="login.php">Login</a>
+
+           <?php if($_SESSION['loggedin'] == true){
+             echo '<a class="btn btn-sm btn-primary" href="';
+             echo url_for('logout.php');
+             echo '">Log Out</a>';
+
+           } else {
+             echo '<a class="btn btn-sm btn-primary" href="';
+             echo url_for('login.php');
+             echo '">Login</a>';
+           }
+
+           ?>
+
          </div>
        </div>
      </header>

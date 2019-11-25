@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             switch($role){
                                 case "Customer":
                                     echo "You have logged in";
-                                    //header("location: index.php");
+                                    header("location: index.php");
                                     break;
                                 case "doctor":
                                     header("location: contact.php");
