@@ -34,14 +34,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["email"] = $email;
                             $_SESSION["role"] = $role;
                             switch($role){
-                                case "patient":
+                                case "1":
                                     echo "You have logged in";
-                                    header("location: index.php");
+                                    header("location: userprofile.php");
                                     break;
-                                case "provider":
+                                case "2":
                                     header("location: contact.php");
                                     break;
-                                case "administrator":
+                                case "3":
                                     header("location: administrator/index.php");
                                     break;
                                 default:

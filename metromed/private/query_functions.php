@@ -33,7 +33,7 @@
     mysqli_close($db);
   }
 
-  function find_patient_by_id($id) {
+  function find_user_by_id($id) {
     global $db;
 
     // $sql = "SELECT * FROM user_info ";
@@ -48,11 +48,26 @@
     $sql .= "WHERE i.user_id='" . $id . "'" . " AND u.user_id='" . $id . "'";
     $sql .= ";";
     $result = mysqli_query($db, $sql);
-    echo $sql;
+    // echo $sql;
     confirm_result_set($result);
     $patient = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
     return $patient; // returns an assoc
+
+  }
+
+  function find_user_by_id_2($id) {
+    global $db;
+
+    $sql = "SELECT u.*, i.* FROM user_info AS i, user AS u ";
+    $sql .= "WHERE i.user_id='" . $id . "'" . " AND u.user_id='" . $id . "'";
+    $sql .= ";";
+    $result = mysqli_query($db, $sql);
+    // echo $sql;
+    confirm_result_set($result);
+    $user = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $user; // returns an assoc
 
   }
 
@@ -108,6 +123,67 @@
     }
   }
 
+  function update_user($user) {
+    global $db;
+
+    $sql = "UPDATE user_info SET ";
+    $sql .= "f_name='" . $user['f_name'] . "', ";
+    $sql .= "l_name='" . $user['l_name'] . "', ";
+    $sql .= "m_name='" . $user['m_name'] . "', ";
+    $sql .= "address='" . $user['address'] . "', ";
+    $sql .= "city='" . $user['city'] . "', ";
+    $sql .= "state='" . $user['state'] . "', ";
+    $sql .= "zip='" . $user['zip'] . "', ";
+    $sql .= "phone_number='" . $user['phone_number'] . "' ";
+    $sql .= "WHERE user_id='" . $user['user_id'] . "' ";
+    $sql .= "LIMIT 1; ";
+    echo $sql;
+    $result1 = mysqli_query($db, $sql);
+
+    $sql2 = "UPDATE user SET ";
+    $sql2 .= "email='" . $user['email'] . "' ";
+    $sql2 .= "WHERE user_id='" . $user['user_id'] . "' ";
+    $sql2 .= "LIMIT 1;";
+    // echo $sql2;
+    $result2 = mysqli_query($db, $sql2);
+
+    if($result1 == true && $result2 == true) {
+      return true;
+    } elseif($result1 == true && $result2 == false) {
+      echo mysqli_error($db) . " on query 2. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }elseif ($result1 == false && $result2 == true) {
+      echo mysqli_error($db) . "on query 1. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }else{
+      // INSERT failed
+      echo mysqli_error($db) . "on both queries. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }
+    // $conn = mysqli_connect("localhost", "ics325fa1919", "3887", "ics325fa1919");
+    // if ($conn->connect_error) {
+    //   die("Connection failed: " . $conn->connect_error);
+    // }
+    //   $sql = "UPDATE user SET email='$email' WHERE user_id='".$userid."'";
+    //
+    //   $sql = "UPDATE user_info SET f_name='$firstname', l_name='$lastname', m_name='$middlename',
+    //           address='$address', city='$city', state='$state', zip='$zip', phone_number='$phone' WHERE user_id='".$userid."'";
+    //
+    // if ($conn->query($sql)){
+    //   echo "Your profile was updated sucessfully";
+    // }
+    // else{
+    //   echo "Error: ". $sql ."
+    //   ". $conn->error;
+    // }
+    // $conn->close();
+
+  }
+
+
   function update_patient($patient) {
     global $db;
 
@@ -125,7 +201,7 @@
     $sql .= "policy_number='" . $patient['policy_number'] . "' ";
     $sql .= "WHERE user_id='" . $patient['user_id'] . "' ";
     $sql .= "LIMIT 1; ";
-    // echo $sql;
+    echo $sql;
     $result1 = mysqli_query($db, $sql);
 
     $sql2 = "UPDATE user SET ";
@@ -134,7 +210,7 @@
     $sql2 .= "enabled='" . $patient['enabled'] . "' ";
     $sql2 .= "WHERE user_id='" . $patient['user_id'] . "' ";
     $sql2 .= "LIMIT 1;";
-    // echo $sql2;
+    echo $sql2;
     $result2 = mysqli_query($db, $sql2);
 
     if($result1 == true && $result2 == true) {

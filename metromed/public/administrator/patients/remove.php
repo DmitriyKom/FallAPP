@@ -14,7 +14,7 @@ if (is_post()) {
   redirect_to(url_for('/administrator/patients/index.php'));
 
 } else {
-  $patient = find_patient_by_id($user_id);
+  $patient = find_user_by_id($user_id);
 }
 
 ?>

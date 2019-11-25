@@ -1,17 +1,45 @@
-<?php require_once('../private/initialize.php'); ?>
-
 <?php
-$email = filter_input(INPUT_POST, 'Email');
-$password = filter_input(INPUT_POST, 'password');
- ?>
 
-<?php $page_title = 'User Profile'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+require_once('../private/initialize.php');
+
+include(SHARED_PATH . '/metromed_header.php');
+
+$page_title = 'User Profile';
+
+$u_id = $_SESSION['user_id'];
+
+if(is_post()) {
+
+  $user = [];
+  $user['f_name'] = $_POST['f_name'] ?? '';
+  $user['l_name'] = $_POST['l_name'] ?? '';
+  $user['m_name'] = $_POST['m_name'] ?? '';
+  $user['address'] = $_POST['address'] ?? '';
+  $user['city'] = $_POST['city'] ?? '';
+  $user['state'] = $_POST['state'] ?? '';
+  $user['zip'] = $_POST['zip'] ?? '';
+  $user['phone_number']  = $_POST['phone_number'] ?? '';
+  $user['user_id'] = $_SESSION['user_id'] ?? '';
+  $user['email'] = $_POST['email'] ?? '';
+
+  $result = update_user($user);
+  redirect_to(url_for('/userprofile.php'));
+
+} else {
+
+  $user_id = find_user_by_id_2($u_id);
+
+}
+
+
+
+
+?>
 
 <div class="d-flex pt-5" id="wrapper">
   <div class="bg-light border-right" id="sidebar-left">
     <div class="list-group list-group-flush">
-      <a href="userprofile.html" class="list-group-item list-group-item-action active">My Profile</a>
+      <a href="userprofile.php" class="list-group-item list-group-item-action active">My Profile</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Insurance</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Appointments</a>
 
@@ -20,81 +48,51 @@ $password = filter_input(INPUT_POST, 'password');
 
   <div class="page-content">
 
-    <?php
-    global $db;
-      // $conn = mysqli_connect("localhost", "root", "", "fallapp");
-      //Check connection
-      if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-      }
-      else {
-      $sql = "SELECT * FROM user WHERE email='".$email."'";
-      $result = $db->query($sql);
-      while ($row = $result->fetch_assoc()){
-        $userId=$row['user_id'];
-        $Email=$row['email'];
-        $Password=$row['password'];
-        }
-
-        $sql = "SELECT * FROM user_info WHERE user_id='".$userId."'";
-        $result = $db->query($sql);
-        while ($row = $result->fetch_assoc()){
-          $userId=$row['user_id'];
-          $Firstname=$row['f_name'];
-          $Lastname=$row['l_name'];
-          $Middlename=$row['m_name'];
-          $Address=$row['address'];
-          $City=$row['city'];
-          $State=$row['state'];
-          $Zipcode=$row['zip'];
-          $Phone=$row['phone_number'];
-          }
-        }
-    ?>
-
-    <form class="ml-3" action="userupdate.php" method="post">
-      <input type="hidden" id="userId" name="userId" value="<?php echo $userId; ?>">
+    <form class="ml-3" action="<?php echo url_for('userprofile.php?user_id=' . h(u($u_id))); ?>" method="post">
+      <input type="hidden" id="user_id" name="user_id" value="<?php echo $id; ?>">
       <div class="form-row">
         <div class="form-group col-md-4">
-          <label for="inputFirstName">First Name</label>
-          <input type="text" class="form-control" name="inputFirstName" placeholder="First" value="<?php echo $Firstname; ?>">
+          <label for="f_name">First Name</label>
+          <input type="text" class="form-control" name="f_name" id="f_name" placeholder="First" value="<?php echo h($user_id['f_name']); ?>">
         </div>
         <div class="form-group col-md-4">
-          <label for="inputMiddleName">Middle Name</label>
-          <input type="text" class="form-control" name="inputMiddleName" placeholder="Middle" value="<?php echo $Middlename; ?>">
+          <label for="m_name">Middle Name</label>
+          <input type="text" class="form-control" name="m_name" id="m_name" placeholder="Middle" value="<?php echo h($user_id['m_name']); ?>">
         </div>
         <div class="form-group col-md-4">
-          <label for="inputLastName">Last Name</label>
-          <input type="text" class="form-control" name="inputLastName" placeholder="Last" value="<?php echo $Lastname; ?>">
+          <label for="l_name">Last Name</label>
+          <input type="text" class="form-control" name="l_name" id="l_name" placeholder="Last" value="<?php echo h($user_id['l_name']); ?>">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" name="inputEmail" placeholder="Email" value="<?php echo $Email; ?>">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo h($user_id['email']); ?>">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPhone">Phone Number</label>
-          <input type="text" class="form-control" name="inputPhone" placeholder="Phone" value="<?php echo $Phone; ?>">
+          <label for="phone_number">Phone Number</label>
+          <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone" value="<?php echo h($user_id['phone_number']); ?>">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" name="inputAddress" placeholder="1234 Main St" value="<?php echo $Address; ?>">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" value="<?php echo h($user_id['address']); ?>">
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="inputAddress2">Address 2</label>
         <input type="text" class="form-control" name="inputAddress2" placeholder="Apartment, Unit, etc...">
-      </div>
+      </div> -->
       <div class=" form-row">
         <div class="form-group col-md-6">
-          <label for="inputCity">City</label>
-          <input type="text" class="form-control" name="inputCity" placeholder="city" value="<?php echo $City; ?>">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city" id="city" placeholder="city" value="<?php echo h($user_id['city']); ?>">
         </div>
         <div class="form-group col-md-4">
-          <label for="inputState">State</label>
-          <select name="inputState" class="form-control">
-            <option selected>Choose...</option>
+          <label for="state">State</label>
+          <select name="state" class="form-control">
+            <option selected>
+              <?php echo h($user_id['state']); ?>
+            </option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
             <option value="Arizona">Arizona</option>
@@ -118,7 +116,7 @@ $password = filter_input(INPUT_POST, 'password');
             <option value="Maryland">Maryland</option>
             <option value="Massachusetts">Massachusetts</option>
             <option value="Michigan">Michigan</option>
-            <option selected="selected" value="Minnesota">Minnesota</option>
+            <option value="Minnesota">Minnesota</option>
             <option value="Mississippi">Mississippi</option>
             <option value="Missouri">Missouri</option>
             <option value="Montana">Montana</option>
@@ -149,15 +147,18 @@ $password = filter_input(INPUT_POST, 'password');
           </select>
         </div>
         <div class="form-group col-md-2">
-          <label for="inputZip">Zip</label>
-          <input type="text" class="form-control" name="inputZip" placeholder="zipcode" value="<?php echo $Zipcode; ?>">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" name="zip" id="zip" placeholder="zipcode" value="<?php echo h($user_id['zip']); ?>">
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Update</button>
+      <div id="operations">
+      <input type="submit" class="btn btn-primary" value="Update" />
+        <!-- <input type="submit" value="Add Patient" /> -->
+      </div>
     </form>
   </div>
 </div>
-</div>
+<!-- </div> -->
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
