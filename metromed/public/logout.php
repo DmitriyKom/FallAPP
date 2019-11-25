@@ -25,7 +25,7 @@ include(SHARED_PATH . '/metromed_header.php');
   }
 ?>
 
-<p><a href="<?php echo url_for('login.php') ?>">Back to Home Page</a></p>
+<p><a href="<?php echo url_for('login.php') ?>">Back to Login</a></p>
 
 
 <div class="">

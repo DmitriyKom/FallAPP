@@ -135,7 +135,6 @@ INSERT INTO insurance (ins_id, ins_co)
 VALUES (1, "Medica"),(2, "United Health Care");
 
 INSERT INTO user_info(
-    user_id,
     f_name,
     l_name,
     m_name,
@@ -148,7 +147,25 @@ INSERT INTO user_info(
     ins_id,
     policy_number
 )
-VALUES(1,"dmitriy","komarov","","","","",55426,9522017106,"2019-11-11",1,"4567890");
+VALUES("dmitriy","komarov","","","","",55426,9522017106,"2019-11-11",1,"4567890");
 
-INSERT INTO `user`(`user_id`,`email`,`password`,`role`,`enabled`)
-VALUES ('1', 'dkom23@hotmail.com', '1234', 'Customer', '1');
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('dkom23@hotmail.com', '1234', 'patient', '1');
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("mellisa","dunken","","","","",55433,7632415599,"2000-05-26",1,"1234567");
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('mellisa@gmail.com', '1234', 'administrator', '1');
