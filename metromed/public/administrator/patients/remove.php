@@ -5,6 +5,7 @@ require_once('../../../private/initialize.php');
 if(!isset($_GET['user_id'])) {
   redirect_to(url_for('/administrator/patients/index.php'));
 }
+
 $user_id = $_GET['user_id'];
 
 if (is_post()) {

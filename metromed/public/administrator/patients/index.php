@@ -43,9 +43,7 @@
       <?php } ?>
   	</table>
 
-    <?php
-      mysqli_free_result($patient_set);
-    ?>
+    <?php mysqli_free_result($patient_set); ?>
   </div>
 
 </div>

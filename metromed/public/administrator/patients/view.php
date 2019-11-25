@@ -1,7 +1,7 @@
-<?php require_once('../../../private/initialize.php'); ?>
-
-
 <?php
+
+require_once('../../../private/initialize.php');
+
 // $id = isset($_GET['id']) ? $_GET['id'] : '1';
 $user_id = $_GET['user_id'] ?? '1'; // PHP > 7.0
 
