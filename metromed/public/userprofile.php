@@ -21,14 +21,15 @@ $password = filter_input(INPUT_POST, 'password');
   <div class="page-content">
 
     <?php
-      $conn = mysqli_connect("localhost", "root", "", "fallapp");
-      // Check connection
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    global $db;
+      // $conn = mysqli_connect("localhost", "root", "", "fallapp");
+      //Check connection
+      if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
       }
       else {
       $sql = "SELECT * FROM user WHERE email='".$email."'";
-      $result = $conn->query($sql);
+      $result = $db->query($sql);
       while ($row = $result->fetch_assoc()){
         $userId=$row['user_id'];
         $Email=$row['email'];
@@ -36,7 +37,7 @@ $password = filter_input(INPUT_POST, 'password');
         }
 
         $sql = "SELECT * FROM user_info WHERE user_id='".$userId."'";
-        $result = $conn->query($sql);
+        $result = $db->query($sql);
         while ($row = $result->fetch_assoc()){
           $userId=$row['user_id'];
           $Firstname=$row['f_name'];
