@@ -2,15 +2,21 @@
 
 require_once('../../../private/initialize.php');
 
+//Restrict page to administrators
+if($_SESSION['role'] != 'administrator'){
+  redirect_to(url_for('/index.php'));
+}
+
 // $id = isset($_GET['id']) ? $_GET['id'] : '1';
 $user_id = $_GET['user_id'] ?? '1'; // PHP > 7.0
 
 $patient = find_patient_by_id($user_id);
 
-?>
+$page_title = 'View Patient';
+include(SHARED_PATH . '/metromed_header.php');
 
-<?php $page_title = 'View Patient'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+
+?>
 
 <div id="content">
 

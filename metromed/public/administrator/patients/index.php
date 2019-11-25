@@ -1,4 +1,10 @@
-<?php require_once('../../../private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php');
+
+if($_SESSION['role'] != 'administrator'){
+  redirect_to(url_for('/index.php'));
+}
+
+?>
 <?php
 
   $patient_set = find_all_patients();
