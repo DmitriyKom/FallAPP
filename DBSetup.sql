@@ -1,6 +1,20 @@
-DROP DATABASE IF EXISTS fallapp;
+-- CREATE USER 'ics325fa1919'@'localhost' IDENTIFIED BY PASSWORD '3887';
+--
+-- CREATE DATABASE IF NOT EXISTS `ics325fa1919`;
+-- GRANT ALL PRIVILEGES ON `ics325fa1919`.* TO 'ics325fa1919'@'localhost';
 
-Create DATABASE fallapp;
+USE ics325fa1919;
+
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS appointment;
+DROP TABLE IF EXISTS bill;
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS preference;
+DROP TABLE IF EXISTS user_info;
+DROP TABLE IF EXISTS insurance;
+DROP TABLE IF EXISTS clinic_services;
+DROP TABLE IF EXISTS service;
+DROP TABLE IF EXISTS clinic;
 
 CREATE TABLE insurance (
     ins_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -24,6 +38,7 @@ CREATE TABLE user_info (
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
 
+
 CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     email varchar(50) NOT NULL UNIQUE KEY,
@@ -33,6 +48,7 @@ CREATE TABLE user (
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES user_info(user_id)
 );
+
 
 CREATE TABLE appointment (
     app_id int NOT NULL AUTO_INCREMENT,
@@ -45,6 +61,7 @@ CREATE TABLE appointment (
     FOREIGN KEY (doc_id) REFERENCES user_info(user_id)
 );
 
+
 CREATE TABLE service (
     service_id int NOT NULL AUTO_INCREMENT,
     service varchar(100),
@@ -52,11 +69,13 @@ CREATE TABLE service (
     PRIMARY KEY (service_id)
 );
 
+
 CREATE TABLE clinic (
     clinic_id int NOT NULL AUTO_INCREMENT,
     clinic_name varchar(100),
     PRIMARY KEY (clinic_id)
 );
+
 
 CREATE TABLE preference (
     pref_id int NOT NULL AUTO_INCREMENT,
@@ -85,6 +104,7 @@ CREATE TABLE clinic_services (
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
 );
 
+
 CREATE TABLE payments (
     payment_id int NOT NULL AUTO_INCREMENT,
     payment_amount float,
@@ -94,6 +114,7 @@ CREATE TABLE payments (
     PRIMARY KEY (payment_id),
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
+
 
 CREATE TABLE bill (
     bill_id int NOT NULL AUTO_INCREMENT,
@@ -111,10 +132,9 @@ CREATE TABLE bill (
 );
 
 INSERT INTO insurance (ins_id, ins_co)
-VALUES (1, "Medica"),
-(2, "United Health Care");
+VALUES (1, "Medica"),(2, "United Health Care");
+
 INSERT INTO user_info(
-    user_id,
     f_name,
     l_name,
     m_name,
@@ -127,20 +147,25 @@ INSERT INTO user_info(
     ins_id,
     policy_number
 )
-VALUES(
-    1,
-    "dmitriy",
-    "komarov",
-    "",
-    "",
-    "",
-    "",
-    55426,
-    9522017106,
-    "2019-11-11",
-    1,
-    "4567890"
-);
+VALUES("dmitriy","komarov","","","","",55426,9522017106,"2019-11-11",1,"4567890");
 
-INSERT INTO `user` (`user_id`, `email`, `password`, `role`, `enabled`)
-VALUES ('1', 'dkom23@hotmail.com', '1234', 'Customer', '1');
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('dkom23@hotmail.com', '1234', 'patient', '1');
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("mellisa","dunken","","","","",55433,7632415599,"2000-05-26",1,"1234567");
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('mellisa@gmail.com', '1234', 'administrator', '1');

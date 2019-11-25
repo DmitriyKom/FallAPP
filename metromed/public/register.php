@@ -4,31 +4,16 @@ include(SHARED_PATH . '/metromed_header.php');
 global $db;
 $email = "";
 $password = "";
-$first_name = "";
-$last_name = "";
-$middle_name = "";
+$f_name = "";
+$l_name = "";
+$m_name = "";
 $address = "";
 $city = "";
 $state = "";
 $zipcode = "";
 $phone = "";
-$SSN = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sql = "SELECT ssn FROM user_info WHERE ssn = '".trim($_POST["SSN"])."'";
-        if ($stmt = mysqli_prepare($db, $sql)) {
-            $param_email = trim($_POST["SSN"]);;
-            if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    echo  "This SSN already taken.";
-                    return false;
-                } else {
-                    $SSN = trim($_POST["SSN"]);;
-                }
-            } else {
-                echo "Something went wrong. Please try again later.";
-            }
-        }
     $sql = "SELECT email FROM user WHERE email = '".trim($_POST["email"])."'";
     if ($stmt = mysqli_prepare($db, $sql)) {
         $param_email = trim($_POST["email"]);;
@@ -45,18 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     $password =  trim($_POST["password"]);
-    $first_name = trim($_POST["first_name"]);
-    $last_name = trim($_POST["last_name"]);
-    $middle_name = trim($_POST["middle_name"]);
+    $f_name = trim($_POST["f_name"]);
+    $l_name = trim($_POST["l_name"]);
+    $m_name = trim($_POST["m_name"]);
     $address = trim($_POST["address"]);
     $city = trim($_POST["city"]);
     $state = trim($_POST["state"]);
     $zipcode = trim($_POST["zipcode"]);
     $phone = trim($_POST["phone_number"]);
 
-        $insert_user_info_query = "INSERT INTO user_info(first_name,last_name,middle_name,address,city,state,zip,phone_number,SSN,ins_id)
-            VALUES('". $first_name."','".$last_name."','".$middle_name."','".$address ."','".
-            $city ."','". $state ."','". $zipcode ."',". $phone .",". $SSN .", 1 )";
+        $insert_user_info_query = "INSERT INTO user_info(f_name,l_name,m_name,address,city,state,zip,phone_number,ins_id)
+            VALUES('". $f_name."','".$l_name."','".$m_name."','".$address ."','".
+            $city ."','". $state ."','". $zipcode ."',". $phone .", 1 )";
         // echo $insert_user_info_query;
         if (mysqli_query($db, $insert_user_info_query)) {
             //echo "Users Information added successfully";
@@ -96,19 +81,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p>Please fill this form to create an account.</p>
 
 <form class="form-signin" method="post" >
-    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
     <br>
     <input type="password"  name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <input type="text"  name="first_name" id="inputPassword" class="form-control" placeholder="First Name" required>
-    <input type="text"  name="last_name" id="inputPassword" class="form-control" placeholder="last Name" required>
-    <input type="text"  name="middle_name" id="inputPassword" class="form-control" placeholder="Middle Name">
+    <input type="text"  name="f_name" id="inputPassword" class="form-control" placeholder="First Name" required>
+    <input type="text"  name="l_name" id="inputPassword" class="form-control" placeholder="Last Name" required>
+    <input type="text"  name="m_name" id="inputPassword" class="form-control" placeholder="Middle Name">
     <input type="text"  name="address" id="inputPassword" class="form-control" placeholder="Address">
     <input type="text"  name="city" id="inputPassword" class="form-control" placeholder="City">
     <input type="text"  name="state" id="inputPassword" class="form-control" placeholder="State">
     <input type="text"  name="zipcode" id="inputPassword" class="form-control" placeholder="Zipcode">
     <input type="text"  name="phone_number" id="inputPassword" class="form-control" placeholder="Phone Number">
-    <input type="password"  name="SSN" id="inputPassword" class="form-control" placeholder="SSN" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
     <a href="register.php">Register account</a>
 </form>

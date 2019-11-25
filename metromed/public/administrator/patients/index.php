@@ -1,4 +1,10 @@
-<?php require_once('../../../private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php');
+
+if($_SESSION['role'] != 'administrator'){
+  redirect_to(url_for('/index.php'));
+}
+
+?>
 <?php
 
   $patient_set = find_all_patients();
@@ -38,14 +44,12 @@
 
           <td><a class="action" href="<?php echo url_for('/administrator/patients/view.php?user_id=' . h(u($patient['user_id']))); ?>">View</a></td>
           <td><a class="action" href="<?php echo url_for('/administrator/patients/edit.php?user_id=' . h(u($patient['user_id']))); ?>">Edit</a></td>
-          <td><a class="action" href="<?php echo url_for('/administrator/patients/delete.php?user_id=' . h(u($patient['user_id']))); ?>">Delete</a></td>
+          <td><a class="action" href="<?php echo url_for('/administrator/patients/remove.php?user_id=' . h(u($patient['user_id']))); ?>">Delete</a></td>
     	  </tr>
       <?php } ?>
   	</table>
 
-    <?php
-      mysqli_free_result($patient_set);
-    ?>
+    <?php mysqli_free_result($patient_set); ?>
   </div>
 
 </div>

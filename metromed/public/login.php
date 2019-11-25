@@ -31,15 +31,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                            echo $email." ".$password;
                             $_SESSION["loggedin"] = true;
                             $_SESSION["user_id"] = $user_id;
-                            $_SESSION["Email"] = $email;
+                            $_SESSION["email"] = $email;
                             $_SESSION["role"] = $role;
                             switch($role){
-                                case "Customer":
+                                case "patient":
                                     echo "You have logged in";
-                                    //header("location: index.php");
+                                    header("location: index.php");
                                     break;
-                                case "doctor":
+                                case "provider":
                                     header("location: contact.php");
+                                    break;
+                                case "administrator":
+                                    header("location: administrator/index.php");
                                     break;
                                 default:
                                     header("location: index.php");}
