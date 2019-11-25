@@ -7,7 +7,18 @@
 
     <div class="jumbotron jumbotron main-bg-cover">
       <h1>Welcome</h1>
-      <p><a class="btn btn-lg btn-primary" href="booking/appointment.php">Schedule an appointment</a></p>
+
+      <?php if($_SESSION['loggedin'] == true){
+
+        echo '<p><a class="btn btn-lg btn-primary" href="';
+        echo url_for('booking/appointment.php');
+        echo '">Schedule an appointment</a></p>';
+
+      }
+
+      ?>
+
+
     </div>
 
     <div class="row mb-2">
