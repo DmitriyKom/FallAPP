@@ -2,13 +2,23 @@
 
 -- Create DATABASE fallapp;
 
+-- CREAT USER ics325fa1919 IDENTIFIED BY PASSWORD '3887';
+-- GRANT ALL ON ics325fa1919.* TO 'ics325fa1919'@'localhost';
+
+CREATE USER 'ics325fa1919'@'localhost' IDENTIFIED BY PASSWORD '3887';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO 'ics325fa1919'@'localhost';
+CREATE DATABASE IF NOT EXISTS `ics325fa1919`;
+GRANT ALL PRIVILEGES ON `ics325fa1919`.* TO 'ics325fa1919'@'localhost';
+
 USE ics325fa1919;
 
+DROP TABLE IF EXISTS insurance;
 CREATE TABLE insurance (
     ins_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ins_co varchar(50)
 );
 
+DROP TABLE IF EXISTS user_info;
 CREATE TABLE user_info (
     user_id int NOT NULL AUTO_INCREMENT ,
     f_name varchar(50) NOT NULL,
@@ -26,6 +36,7 @@ CREATE TABLE user_info (
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
 
+DROP TABLE IF EXISTS user;
 CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     email varchar(50) NOT NULL UNIQUE KEY,
@@ -36,6 +47,7 @@ CREATE TABLE user (
     FOREIGN KEY (user_id) REFERENCES user_info(user_id)
 );
 
+DROP TABLE IF EXISTS appointment;
 CREATE TABLE appointment (
     app_id int NOT NULL AUTO_INCREMENT,
     user_id int,
@@ -47,6 +59,7 @@ CREATE TABLE appointment (
     FOREIGN KEY (doc_id) REFERENCES user_info(user_id)
 );
 
+DROP TABLE IF EXISTS service;
 CREATE TABLE service (
     service_id int NOT NULL AUTO_INCREMENT,
     service varchar(100),
@@ -54,12 +67,14 @@ CREATE TABLE service (
     PRIMARY KEY (service_id)
 );
 
+DROP TABLE IF EXISTS clinic;
 CREATE TABLE clinic (
     clinic_id int NOT NULL AUTO_INCREMENT,
     clinic_name varchar(100),
     PRIMARY KEY (clinic_id)
 );
 
+DROP TABLE IF EXISTS preference;
 CREATE TABLE preference (
     pref_id int NOT NULL AUTO_INCREMENT,
     user_id int,
@@ -77,7 +92,7 @@ CREATE TABLE preference (
     FOREIGN KEY (service_id_3) REFERENCES service(service_id)
 );
 
-
+DROP TABLE IF EXISTS clinic_services;
 CREATE TABLE clinic_services (
     cs_id int NOT NULL AUTO_INCREMENT,
     clinic_id int,
@@ -87,6 +102,7 @@ CREATE TABLE clinic_services (
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
 );
 
+DROP TABLE IF EXISTS payments;
 CREATE TABLE payments (
     payment_id int NOT NULL AUTO_INCREMENT,
     payment_amount float,
@@ -97,6 +113,7 @@ CREATE TABLE payments (
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
 
+DROP TABLE IF EXISTS bill;
 CREATE TABLE bill (
     bill_id int NOT NULL AUTO_INCREMENT,
     user_id int,
@@ -113,8 +130,8 @@ CREATE TABLE bill (
 );
 
 INSERT INTO insurance (ins_id, ins_co)
-VALUES (1, "Medica"),
-(2, "United Health Care");
+VALUES (1, "Medica"),(2, "United Health Care");
+
 INSERT INTO user_info(
     user_id,
     f_name,
@@ -129,20 +146,7 @@ INSERT INTO user_info(
     ins_id,
     policy_number
 )
-VALUES(
-    1,
-    "dmitriy",
-    "komarov",
-    "",
-    "",
-    "",
-    "",
-    55426,
-    9522017106,
-    "2019-11-11",
-    1,
-    "4567890"
-);
+VALUES(1,"dmitriy","komarov","","","","",55426,9522017106,"2019-11-11",1,"4567890");
 
-INSERT INTO `user` (`user_id`, `email`, `password`, `role`, `enabled`)
+INSERT INTO `user`(`user_id`,`email`,`password`,`role`,`enabled`)
 VALUES ('1', 'dkom23@hotmail.com', '1234', 'Customer', '1');

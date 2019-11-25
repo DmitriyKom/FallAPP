@@ -16,6 +16,9 @@
           <div class="col-6">
             <h5><strong>Metro Medical main line</strong></h5>
             <h5><a class="text-primary" href="#">651-555-9000</a></h5>
+            <!-- Apparently is very appreciated by nurses -->
+            <h5><strong>Main Fax Number</strong></h5>
+            <h5><a class="text-primary" href="#">651-555-9001</a></h5>
           </div>
           <div class="col-6">
             <h5><strong>Metro Medical emergency line</strong></h5>

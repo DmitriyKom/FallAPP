@@ -11,6 +11,28 @@
     return $result;
   }
 
+  function book_appointment($appointment) {
+    global $db;
+
+    // echo $appointment['doc_id'];
+    // echo $appointment['date'];
+    $doc_id = $appointment['doc_id'];
+    $date = $appointment['doc_id'];
+
+
+    $query = "INSERT INTO appointment (user_id, doc_id, app_dt) VALUES (?, ?, ?)";
+    $stmt = mysqli_prepare($db, $query);
+    $bind = mysqli_stmt_bind_param($stmt, 'sss', $doc_id, $doc_id, $date);
+    echo $bind;
+    mysqli_stmt_execute($stmt);
+
+
+    $msg = "<div class='alert alert-success'>Booking Successfull</div>";
+
+    mysqli_stmt_free_result($stmt);
+    mysqli_close($db);
+  }
+
   function find_patient_by_id($id) {
     global $db;
 
