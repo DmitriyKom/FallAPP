@@ -31,9 +31,6 @@ if(is_post()) {
 
 }
 
-
-
-
 ?>
 
 <div class="d-flex pt-5" id="wrapper">
