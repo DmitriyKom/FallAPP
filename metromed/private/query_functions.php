@@ -46,8 +46,9 @@
 
     $sql = "SELECT i.*, u.email, u.role, u.enabled FROM user_info AS i, user AS u ";
     $sql .= "WHERE i.user_id='" . $id . "'" . " AND u.user_id='" . $id . "'";
+    $sql .= ";";
     $result = mysqli_query($db, $sql);
-    // echo $sql;
+    echo $sql;
     confirm_result_set($result);
     $patient = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
