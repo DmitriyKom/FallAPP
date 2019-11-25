@@ -5,22 +5,21 @@
 
 USE ics325fa1919;
 
-DROP TABLE IF EXISTS insurance;
-DROP TABLE IF EXISTS user_info;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS appointment;
+DROP TABLE IF EXISTS bill;
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS insurance;
+DROP TABLE IF EXISTS preference;
+DROP TABLE IF EXISTS user_info;
+DROP TABLE IF EXISTS clinic_services;
 DROP TABLE IF EXISTS service;
 DROP TABLE IF EXISTS clinic;
-DROP TABLE IF EXISTS preference;
-DROP TABLE IF EXISTS clinic_services;
-DROP TABLE IF EXISTS payments;
-DROP TABLE IF EXISTS bill;
 
 CREATE TABLE insurance (
     ins_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ins_co varchar(50)
 );
-
 
 CREATE TABLE user_info (
     user_id int NOT NULL AUTO_INCREMENT ,
