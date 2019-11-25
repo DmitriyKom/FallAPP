@@ -201,6 +201,46 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*
+*user page
+*/
+
+#sidebar-left {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-left .list-group {
+  width: 15rem;
+}
+
+.page-content {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-left {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-left {
+    margin-left: 0;
+  }
+
+  .page-content {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-left {
+    margin-left: -15rem;
+  }
+}
+
+/*
  * Footer
  */
 .page-footer {
