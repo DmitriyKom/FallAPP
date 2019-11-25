@@ -6,12 +6,22 @@
 USE ics325fa1919;
 
 DROP TABLE IF EXISTS insurance;
+DROP TABLE IF EXISTS user_info;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS appointment;
+DROP TABLE IF EXISTS service;
+DROP TABLE IF EXISTS clinic;
+DROP TABLE IF EXISTS preference;
+DROP TABLE IF EXISTS clinic_services;
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS bill;
+
 CREATE TABLE insurance (
     ins_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ins_co varchar(50)
 );
 
-DROP TABLE IF EXISTS user_info;
+
 CREATE TABLE user_info (
     user_id int NOT NULL AUTO_INCREMENT ,
     f_name varchar(50) NOT NULL,
@@ -29,7 +39,7 @@ CREATE TABLE user_info (
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
 
-DROP TABLE IF EXISTS user;
+
 CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     email varchar(50) NOT NULL UNIQUE KEY,
@@ -40,7 +50,7 @@ CREATE TABLE user (
     FOREIGN KEY (user_id) REFERENCES user_info(user_id)
 );
 
-DROP TABLE IF EXISTS appointment;
+
 CREATE TABLE appointment (
     app_id int NOT NULL AUTO_INCREMENT,
     user_id int,
@@ -52,7 +62,7 @@ CREATE TABLE appointment (
     FOREIGN KEY (doc_id) REFERENCES user_info(user_id)
 );
 
-DROP TABLE IF EXISTS service;
+
 CREATE TABLE service (
     service_id int NOT NULL AUTO_INCREMENT,
     service varchar(100),
@@ -60,14 +70,14 @@ CREATE TABLE service (
     PRIMARY KEY (service_id)
 );
 
-DROP TABLE IF EXISTS clinic;
+
 CREATE TABLE clinic (
     clinic_id int NOT NULL AUTO_INCREMENT,
     clinic_name varchar(100),
     PRIMARY KEY (clinic_id)
 );
 
-DROP TABLE IF EXISTS preference;
+
 CREATE TABLE preference (
     pref_id int NOT NULL AUTO_INCREMENT,
     user_id int,
@@ -85,7 +95,7 @@ CREATE TABLE preference (
     FOREIGN KEY (service_id_3) REFERENCES service(service_id)
 );
 
-DROP TABLE IF EXISTS clinic_services;
+
 CREATE TABLE clinic_services (
     cs_id int NOT NULL AUTO_INCREMENT,
     clinic_id int,
@@ -95,7 +105,7 @@ CREATE TABLE clinic_services (
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
 );
 
-DROP TABLE IF EXISTS payments;
+
 CREATE TABLE payments (
     payment_id int NOT NULL AUTO_INCREMENT,
     payment_amount float,
@@ -106,7 +116,7 @@ CREATE TABLE payments (
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
 
-DROP TABLE IF EXISTS bill;
+
 CREATE TABLE bill (
     bill_id int NOT NULL AUTO_INCREMENT,
     user_id int,
