@@ -169,3 +169,57 @@ VALUES("mellisa","dunken","","","","",55433,7632415599,"2000-05-26",1,"1234567")
 
 INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
 VALUES ('mellisa@gmail.com', '1234', '3', '1');
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("Frank","Hargrove","Peter","","","",54112,7645529110,"1990-03-06",1,"7654321");
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('hargrove@gmail.com', '1111', '3', '1');
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("Shannon","Magnuson","","","","",56672,9523340990,"1997-12-09",1,"126651");
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('magnuson@gmail.com', '1111', '1', '1');
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("Michael","Scott","","","","",51298,7029982327,"1999-03-01",1,"9988123");
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('m.scott@hotmail.com', '1111', '1', '1');
