@@ -150,7 +150,7 @@ INSERT INTO user_info(
 VALUES("dmitriy","komarov","","","","",55426,9522017106,"2019-11-11",1,"4567890");
 
 INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
-VALUES ('dkom23@hotmail.com', '1234', 'patient', '1');
+VALUES ('dkom23@hotmail.com', '1234', '1', '1');
 
 INSERT INTO user_info(
     f_name,
@@ -168,4 +168,4 @@ INSERT INTO user_info(
 VALUES("mellisa","dunken","","","","",55433,7632415599,"2000-05-26",1,"1234567");
 
 INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
-VALUES ('mellisa@gmail.com', '1234', 'administrator', '1');
+VALUES ('mellisa@gmail.com', '1234', '3', '1');
