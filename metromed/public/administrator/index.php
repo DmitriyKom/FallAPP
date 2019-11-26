@@ -1,11 +1,13 @@
 <?php
 require_once('../../private/initialize.php');
 
-$page_title = 'Administrator';
 include(SHARED_PATH . '/metromed_header.php');
 
+$page_title = 'Administrator';
+
+
 //Restrict page to administrators
-if($_SESSION['role'] != 'administrator'){
+if($_SESSION['role'] != '3'){
   redirect_to(url_for('/index.php'));
 }
 

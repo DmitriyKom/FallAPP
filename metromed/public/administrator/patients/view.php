@@ -2,19 +2,19 @@
 
 require_once('../../../private/initialize.php');
 
+include(SHARED_PATH . '/metromed_header.php');
+
 //Restrict page to administrators
-if($_SESSION['role'] != 'administrator'){
+if($_SESSION['role'] != '3'){
   redirect_to(url_for('/index.php'));
 }
 
 // $id = isset($_GET['id']) ? $_GET['id'] : '1';
 $user_id = $_GET['user_id'] ?? '1'; // PHP > 7.0
 
-$patient = find_patient_by_id($user_id);
+$patient = find_user_by_id($user_id);
 
 $page_title = 'View Patient';
-include(SHARED_PATH . '/metromed_header.php');
-
 
 ?>
 

@@ -1,18 +1,19 @@
-<?php require_once('../../../private/initialize.php');
+<?php
 
-if($_SESSION['role'] != 'administrator'){
+require_once('../../../private/initialize.php');
+
+include(SHARED_PATH . '/metromed_header.php');
+
+if($_SESSION['role'] != '3'){
   redirect_to(url_for('/index.php'));
 }
-
-?>
-<?php
 
   $patient_set = find_all_patients();
   // echo $patient_set;
 ?>
 
 <?php $page_title = 'Patients'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+
 
 <div id="content">
   <div class="subjects listing">

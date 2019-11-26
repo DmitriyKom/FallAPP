@@ -33,7 +33,7 @@ if (is_post()) {
 
 } else {
 
-  $patient = find_patient_by_id($user_id);
+  $patient = find_user_by_id($user_id);
 
 }
 
