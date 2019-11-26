@@ -1,7 +1,10 @@
--- CREATE USER 'ics325fa1919'@'localhost' IDENTIFIED BY PASSWORD '3887';
---
--- CREATE DATABASE IF NOT EXISTS `ics325fa1919`;
--- GRANT ALL PRIVILEGES ON `ics325fa1919`.* TO 'ics325fa1919'@'localhost';
+CREATE USER 'ics325fa1919'@'localhost' IDENTIFIED BY PASSWORD 'cItFGRxJH23xGS6J';
+
+CREATE DATABASE IF NOT EXISTS `ics325fa1919`;
+
+GRANT USAGE ON *.* TO 'ics325fa1919'@'localhost';
+
+GRANT ALL PRIVILEGES ON `ics325fa1919`.* TO 'ics325fa1919'@'localhost';
 
 USE ics325fa1919;
 
@@ -132,7 +135,8 @@ CREATE TABLE bill (
 );
 
 INSERT INTO insurance (ins_id, ins_co)
-VALUES (1, "Medica"),(2, "United Health Care");
+VALUES (1, "medica"),(2, "unitedhealthcare"),(3, "bluecross/blueshield"),(4, "cigna"),(5, "tricare"),
+(6, "medicare"),(7, "medicaid"),(8, "healthpartners"),(9, "aetna");
 
 INSERT INTO user_info(
     f_name,

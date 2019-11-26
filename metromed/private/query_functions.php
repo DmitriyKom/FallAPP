@@ -265,4 +265,22 @@
     }
   }
 
+  function find_insurance_by_user_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM user_info ";
+    $sql .= "WHERE user_id='" . $id . "' ";
+    $sql .= ";";
+    $result = mysqli_query($db, $sql);
+    echo $sql;
+    confirm_result_set($result);
+    $user = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $user; // returns an assoc
+
+  }
+
+
+
+
 ?>
