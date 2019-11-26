@@ -11,17 +11,17 @@ $u_id = $_SESSION['user_id'];
 if(is_post()) {
 
   $user = array();
-  $user['f_name'] ? $_POST['f_name'] : '';
-  $user['f_name'] ? $_POST['f_name'] : '';
-  $user['l_name'] ? $_POST['l_name'] : '';
-  $user['m_name'] ? $_POST['m_name'] : '';
-  $user['address'] ? $_POST['address'] : '';
-  $user['city'] ? $_POST['city'] : '';
-  $user['state'] ? $_POST['state'] : '';
-  $user['zip'] ? $_POST['zip'] : '';
-  $user['phone_number'] ? $_POST['phone_number'] : '';
-  $user['user_id'] ? $_SESSION['user_id'] : '';
-  $user['email'] ? $_POST['email'] : '';
+  $user['f_name'] = $_POST['f_name'] ?? '';
+  $user['f_name'] = $_POST['f_name'] ?? '';
+  $user['l_name'] = $_POST['l_name'] ?? '';
+  $user['m_name'] = $_POST['m_name'] ?? '';
+  $user['address'] = $_POST['address'] ?? '';
+  $user['city'] = $_POST['city'] ?? '';
+  $user['state'] = $_POST['state'] ?? '';
+  $user['zip'] = $_POST['zip'] ?? '';
+  $user['phone_number'] = $_POST['phone_number'] ?? '';
+  $user['user_id'] = $_SESSION['user_id'] ?? '';
+  $user['email'] = $_POST['email'] ?? '';
 
   $result = update_user($user);
   redirect_to(url_for('/userprofile.php'));
