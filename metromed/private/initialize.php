@@ -9,6 +9,10 @@
   $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
   define("WWW_ROOT", $doc_root);
 
+  $public_profile_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 19;
+  $profile_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_profile_end);
+  define("PROFILE", $profile_root);
+
   require_once('functions.php');
   require_once('database.php');
   require_once('query_functions.php');

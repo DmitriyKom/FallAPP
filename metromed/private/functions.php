@@ -8,6 +8,10 @@ function url_for($script_path) {
   return WWW_ROOT . $script_path;
 }
 
+function profile_sub() {
+  echo "<br />" . str_replace(PROFILE, "", $_SERVER['REQUEST_URI']);
+}
+
 function u($string="") {
   return urlencode($string);
 }
