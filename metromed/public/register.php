@@ -12,6 +12,7 @@ $city = "";
 $state = "";
 $zipcode = "";
 $phone = "";
+$dob = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT email FROM user WHERE email = '".trim($_POST["email"])."'";
@@ -38,11 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $state = trim($_POST["state"]);
     $zipcode = trim($_POST["zipcode"]);
     $phone = trim($_POST["phone_number"]);
+    $dob = trim($_POST["dob"]);
 
-        $insert_user_info_query = "INSERT INTO user_info(f_name,l_name,m_name,address,city,state,zip,phone_number,ins_id)
+        $insert_user_info_query = "INSERT INTO user_info(f_name,l_name,m_name,address,city,state,zip,phone_number,dob,ins_id)
             VALUES('". $f_name."','".$l_name."','".$m_name."','".$address ."','".
-            $city ."','". $state ."','". $zipcode ."',". $phone .", 1 )";
-        // echo $insert_user_info_query;
+            $city ."','". $state ."','". $zipcode ."','". $phone ."','". $dob ."', 1 )";
+        echo $insert_user_info_query;
         if (mysqli_query($db, $insert_user_info_query)) {
             //echo "Users Information added successfully";
         } else {
@@ -50,7 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 . mysqli_error($db);
             return false;
         };
-    $sql = "SELECT user_id FROM user_info WHERE SSN =".$SSN;
+    $new_id = mysqli_insert_id($db);
+    $sql = "SELECT user_id FROM user_info WHERE user_id =".$new_id;
     if ($stmt = mysqli_prepare($db, $sql)) {
         $param_email = trim($_POST["email"]);
         if (mysqli_stmt_execute($stmt)) {
@@ -59,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_stmt_bind_result($stmt, $user_id);
                 if(mysqli_stmt_fetch($stmt)) {
                     $_SESSION["user_id"] = $user_id;
-                    $insert_user_query = "INSERT INTO user(user_id, email, password) VALUES(
-                " . $user_id . "," . '"' . $email . '"' . "," . '"' . $password . '"' . ")";
+                    $insert_user_query = "INSERT INTO user(email, password) VALUES(
+                " . '"' . $email . '"' . "," . '"' . $password . '"' . ")";
                     if (mysqli_query($db, $insert_user_query)) {
                         echo "Thank you for registering";
                     } else {
@@ -92,6 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text"  name="state" id="inputPassword" class="form-control" placeholder="State">
     <input type="text"  name="zipcode" id="inputPassword" class="form-control" placeholder="Zipcode">
     <input type="text"  name="phone_number" id="inputPassword" class="form-control" placeholder="Phone Number">
+    <input type="date" name="dob" id="inputdob" class="form-control" placeholder="Date of Birth" / required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
     <a href="register.php">Register account</a>

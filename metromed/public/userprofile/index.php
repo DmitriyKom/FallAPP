@@ -1,6 +1,6 @@
 <?php
 
-require_once('../private/initialize.php');
+require_once('../../private/initialize.php');
 
 include(SHARED_PATH . '/metromed_header.php');
 
@@ -37,10 +37,9 @@ if(is_post()) {
 <div class="d-flex pt-5" id="wrapper">
   <div class="bg-light border-right" id="sidebar-left">
     <div class="list-group list-group-flush">
-      <a href="userprofile.php" class="list-group-item list-group-item-action active">My Profile</a>
-      <a href="userprofile/insurance.php" class="list-group-item list-group-item-action bg-light">Insurance</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Appointments</a>
-
+      <a href="<?php echo url_for('userprofile/index.php') ?>" class="list-group-item list-group-item-action active">My Profile</a>
+      <a href="<?php echo url_for('userprofile/insurance.php') ?>" class="list-group-item list-group-item-action bg-light">Insurance</a>
+      <a href="<?php echo url_for('userprofile/appointments.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
     </div>
   </div>
 
@@ -51,15 +50,15 @@ if(is_post()) {
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="f_name">First Name</label>
-          <input type="text" class="form-control" name="f_name" id="f_name" placeholder="First" value="<?php echo ucfirst(h($user_id['f_name'])); ?>">
+          <input type="text" class="form-control" name="f_name" id="f_name" placeholder="First" value="<?php echo h($user_id['f_name']); ?>">
         </div>
         <div class="form-group col-md-4">
           <label for="m_name">Middle Name</label>
-          <input type="text" class="form-control" name="m_name" id="m_name" placeholder="Middle" value="<?php echo ucfirst(h($user_id['m_name'])); ?>">
+          <input type="text" class="form-control" name="m_name" id="m_name" placeholder="Middle" value="<?php echo h($user_id['m_name']); ?>">
         </div>
         <div class="form-group col-md-4">
           <label for="l_name">Last Name</label>
-          <input type="text" class="form-control" name="l_name" id="l_name" placeholder="Last" value="<?php echo ucfirst(h($user_id['l_name'])); ?>">
+          <input type="text" class="form-control" name="l_name" id="l_name" placeholder="Last" value="<?php echo h($user_id['l_name']); ?>">
         </div>
       </div>
       <div class="form-row">
@@ -69,7 +68,7 @@ if(is_post()) {
         </div>
         <div class="form-group col-md-6">
           <label for="phone_number">Phone Number</label>
-          <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone" value="<?php echo phone_number_format(h($user_id['phone_number'])); ?>">
+          <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone" value="<?php echo h($user_id['phone_number']); ?>">
         </div>
       </div>
       <div class="form-group">
@@ -156,7 +155,7 @@ if(is_post()) {
     </form>
   </div>
 </div>
-
+<!-- </div> -->
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

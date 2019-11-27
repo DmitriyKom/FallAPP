@@ -38,7 +38,7 @@ body {
 }
 
 .services-bg-cover {
-  background: url('/FallAPP/FallAPP/metromed/public/assets/images/staff.jpg') no-repeat center center;
+  background: url('/metromed/public/assets/images/staff.jpg') no-repeat center center;
   background-position: 0% 10%;
   background-size: cover;
   padding-top: 10%;

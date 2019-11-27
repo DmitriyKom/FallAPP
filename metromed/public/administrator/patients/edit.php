@@ -8,7 +8,7 @@ if(!isset($_GET['user_id'])) {
 $user_id = $_GET['user_id'];
 
 if (is_post()) {
-  $patient = [];
+  $patient = array();
   $patient['user_id'] = $user_id;
   $patient['f_name'] = $_POST['f_name'] ?? '';
   $patient['l_name'] = $_POST['l_name'] ?? '';

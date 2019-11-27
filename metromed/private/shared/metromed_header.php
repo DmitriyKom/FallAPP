@@ -60,5 +60,13 @@ if (!isset($page_title)) {
          <a class="p-2 text-primary" href="<?php echo url_for('community.php') ?>">Community</a>
          <a class="p-2 text-primary" href="<?php echo url_for('contact.php') ?>">Contact</a>
 
+         <?php
+         if($_SESSION['loggedin'] == true){
+           echo '<a class="p-2 text-primary" href="';
+           echo url_for('userprofile.php');
+           echo '">Dashboard</a>';
+         }
+           ?>
+
        </nav>
      </div>

@@ -265,4 +265,57 @@
     }
   }
 
+  function find_insurance_by_user_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM user_info ";
+    $sql .= "WHERE user_id='" . $id . "' ";
+    $sql .= ";";
+    $result = mysqli_query($db, $sql);
+    // echo $sql;
+    confirm_result_set($result);
+    $user = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $user; // returns an assoc
+
+  }
+
+  function update_user_insurance($user) {
+    global $db;
+
+    $sql = "UPDATE user_info SET ";
+    $sql .= "ins_id='" . $user['ins_id'] . "', ";
+    $sql .= "policy_number='" . $user['policy_number'] . "' ";
+    $sql .= "WHERE user_id='" . $user['user_id'] . "' ";
+    $sql .= "LIMIT 1; ";
+    echo $sql;
+    $result1 = mysqli_query($db, $sql);
+
+    if($result1 == true) {
+      return true;
+    }else{
+      // INSERT failed
+      echo mysqli_error($db) . "on both queries. Value of \$enabled: $enabled";
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  function find_all_insurance() {
+    global $db;
+
+    $sql = "SELECT * FROM insurance ";
+    $sql .= "ORDER BY ins_id ASC;";
+    // echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+
+    while($row = mysqli_fetch_assoc($result)){
+      $array[$row['ins_id']] = $row['ins_co'];
+    }
+    return $array;
+  }
+
+
+
 ?>
