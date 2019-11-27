@@ -16,19 +16,21 @@
 
     // echo $appointment['doc_id'];
     // echo $appointment['date'];
+    $user_id = $appointment['user_id'];
     $doc_id = $appointment['doc_id'];
-    $date = $appointment['doc_id'];
+    $app_date = $appointment['app_date'];
 
 
     $query = "INSERT INTO appointment (user_id, doc_id, app_dt) VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($db, $query);
-    $bind = mysqli_stmt_bind_param($stmt, 'sss', $doc_id, $doc_id, $date);
-    echo $bind;
+    echo $query;
+    $bind = mysqli_stmt_bind_param($stmt, 'sss', $user_id, $doc_id, $app_date);
+    // echo $bind;
     mysqli_stmt_execute($stmt);
 
 
     $msg = "<div class='alert alert-success'>Booking Successfull</div>";
-
+    return $msg;
     mysqli_stmt_free_result($stmt);
     mysqli_close($db);
   }
