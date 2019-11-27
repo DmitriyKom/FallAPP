@@ -21,7 +21,6 @@ if(is_post()) {
 } else {
 
   $user_id = find_insurance_by_user_id($u_id);
-  // $ins_id = find_all_insurance();
 
 }
 
@@ -60,15 +59,8 @@ if(is_post()) {
           <input type="text" class="form-control" name="policy_number" id="policy_number" placeholder="Policy Number" value="<?php echo h($user_id['policy_number']); ?>">
         </div>
       </div>
-    <!-- <div class=" form-row">
-      <div class="form-group col-md-4">
-        <label for="ins_co">Insurance Provider</label>
-        <input type="text" class="form-control" name="ins_co" id="ins_co" placeholder="Insurance Provider" value="<?php echo h($user_id['ins_co']); ?>">
-      </div>
-    </div> -->
       <div id="operations">
       <input type="submit" class="btn btn-primary" value="Update" />
-        <!-- <input type="submit" value="Add Patient" /> -->
       </div>
 
     </form>
