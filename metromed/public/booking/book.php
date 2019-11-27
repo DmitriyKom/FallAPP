@@ -83,10 +83,6 @@ include(SHARED_PATH . '/metromed_header.php');
           <label for="">Name</label>
           <input type="text" class="form-control" name="name">
         </div>
-        <!-- <div class="form-group">
-          <label for="">Email</label>
-          <input type="text" class="form-control" name="email">
-        </div> -->
         <div class="form-group">
           <label for="">Doctor</label>
           <input type="text" class="form-control" name="doctor">
