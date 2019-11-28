@@ -13,7 +13,7 @@
 
         </div>
         <h1 class="text-center">Careers<br><br></h1>
-        <h3>Voted one of the best places to work in Minnesota</h3>
+        <h3 class="text-center">Voted one of the best places to work in Minnesota</h3>
         <div class="h-divider">
         </div>
 	       <div class="row">
