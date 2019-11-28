@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-.form-signin h1, p {
+.form-signin h1, p, h3, .privacy, .terms{
   text-align: center;
 }
 
@@ -350,5 +350,18 @@ table.list tr th {
 }
 
 input{
-
 }
+  /*
+  research page
+  */
+  .center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+
+  .research{
+  text-align: center !important; 
+  }
+

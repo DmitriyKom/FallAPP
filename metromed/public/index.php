@@ -22,7 +22,7 @@
           <div class="card-body d-flex flex-column align-items-start">
             <strong class="d-inline-block mb-2 text-primary">Learn</strong>
             <h3 class="mb-0">
-              <a class="text-dark" href="#">Our research</a>
+              <a class="text-dark" href="research.php">Our research</a>
             </h3>
             <p class="card-text mb-auto">At Metro Medical, we conduct hundreds of research studies
               every year which helps advance treatments and improve lives.</p>
@@ -35,7 +35,7 @@
           <div class="card-body d-flex flex-column align-items-start">
             <strong class="d-inline-block mb-2 text-success">Community</strong>
             <h3 class="mb-0">
-              <a class="text-dark" href="#">Outreach Program</a>
+              <a class="text-dark" href="community.php">Outreach Program</a>
             </h3>
             <p class="card-text mb-auto">Metro Med associates also partner with local organizations
               to offer volunteer services at local hospitals and clinics to help increase their community engagement.</p>
