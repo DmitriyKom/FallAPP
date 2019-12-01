@@ -162,6 +162,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+#form-labels {
+  text-align: left;
+}
+
 .form-signin .checkbox {
   font-weight: 400;
 }
@@ -362,6 +366,5 @@ input{
   }
 
   .research{
-  text-align: center !important; 
+  text-align: center !important;
   }
-

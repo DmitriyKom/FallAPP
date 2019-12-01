@@ -57,7 +57,7 @@ if (is_post()) {
         if (mysqli_query($db, $insert_user_info_query)) {
             echo "Users Information added successfully";
         } else {
-            echo "ERROR: Could not able to execute sql1. "
+            echo "ERROR: Not able to execute sql1. "
                 . mysqli_error($db);
             return false;
         };
@@ -76,7 +76,7 @@ if (is_post()) {
                     if (mysqli_query($db, $insert_user_query)) {
                         echo "Thank you for registering";
                     } else {
-                        echo "ERROR: Could not able to execute sql2. "
+                        echo "ERROR: Not able to execute sql2. "
                             . mysqli_error($db);
                         return false;
                     };
@@ -90,10 +90,11 @@ if (is_post()) {
 }
 ?>
 
-    <h2>Sign Up</h2>
-    <p>Please fill this form to create an account.</p>
+    <!-- <h2>Sign Up</h2> -->
+    <!-- <p>Please fill this form to create an account.</p> -->
 
-<form class="form-signin" method="post" >
+  <form class="form-signin" method="post" >
+    <h1 class="h3 mb-3 font-weight-normal" id="form-labels">Create an account</h1>
     <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required autofocus>
     <br>
     <input type="password"  name="password" id="password" class="form-control" placeholder="Password" required>
@@ -107,9 +108,10 @@ if (is_post()) {
     <input type="text"  name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number">
     <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" >
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    <p class="mt-5 mb-3 text-muted">&copy; <?php echo Date('Y'); ?> </p>
-    <a href="register.php">Register account</a>
-</form>
+    <br />
+    <?php echo "Already have an account?" ?>
+    <a href="login.php">Sign in</a>
+  </form>
 
 
 

@@ -185,7 +185,6 @@
 
   }
 
-
   function update_patient($patient) {
     global $db;
 

@@ -63,19 +63,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
     <form class="form-signin" method="post" >
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal" id="form-labels">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="Email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password"  name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
+      <!-- <div class="checkbox mb-3">
+        <input type="checkbox" value="remember-me">
+        <label>Remember me</label>
+      </div> -->
+      <span class="checkbox mb-3">
+        <input type="checkbox" value="remember-me">
+        <label>Remember me</label>
+      </span>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; <?php echo Date('Y'); ?> </p>
-        <a href="register.php">Register account</a>
+      <br />
+      <?php echo "Don't have an account yet?" ?>
+        <a href="register.php">Register here</a>
     </form>
 
 
