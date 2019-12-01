@@ -72,10 +72,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="checkbox" value="remember-me">
         <label>Remember me</label>
       </div> -->
-      <span class="checkbox mb-3">
-        <input type="checkbox" value="remember-me">
-        <label>Remember me</label>
-      </span>
+      <div style="white-space:nowrap" class="checkbox mb-3">
+        <input type="checkbox" value="remember-me" id="inputRememberMe"/>
+        <label for="inputRememberMe">Remember me</label>
+      </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <br />
       <?php echo "Don't have an account yet?" ?>
