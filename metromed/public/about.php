@@ -1,9 +1,12 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'About'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+require_once('../private/initialize.php');
 
+$page_title = 'About';
 
+include(SHARED_PATH . '/metromed_header.php');
+
+?>
 
     <div class="contact-info">
       <div class="jumbotron jumbotron about-bg-cover">

@@ -1,9 +1,7 @@
-<?php
-
-require_once('../private/initialize.php');
-
+<?php require_once('../private/initialize.php');
 include(SHARED_PATH . '/metromed_header.php');
 
+global $db;
 $email = "";
 $password = "";
 $f_name = "";
@@ -16,7 +14,7 @@ $zipcode = "";
 $phone = "";
 $dob = "";
 
-if (is_post()) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT email FROM user WHERE email = '".trim($_POST["email"])."'";
     if ($stmt = mysqli_prepare($db, $sql)) {
         $param_email = trim($_POST["email"]);;
@@ -43,19 +41,12 @@ if (is_post()) {
     $phone = trim($_POST["phone_number"]);
     $dob = trim($_POST["dob"]);
 
-
-
         $insert_user_info_query = "INSERT INTO user_info(f_name,l_name,m_name,address,city,state,zip,phone_number,dob,ins_id)
             VALUES('". $f_name."','".$l_name."','".$m_name."','".$address ."','".
             $city ."','". $state ."','". $zipcode ."','". $phone ."','". $dob ."', 1 )";
         echo $insert_user_info_query;
-
-        global $db;
-
-        // mysqli_begin_transaction($db, MYSQLI_TRAN_START_READ_WRITE);
-
         if (mysqli_query($db, $insert_user_info_query)) {
-            echo "Users Information added successfully";
+            //echo "Users Information added successfully";
         } else {
             echo "ERROR: Could not able to execute sql1. "
                 . mysqli_error($db);
@@ -85,7 +76,6 @@ if (is_post()) {
         }
         return true;
     }//end of addUsers_Info function
-    // mysqli_commit($db);
     mysqli_close($db);
 }
 ?>
@@ -94,20 +84,20 @@ if (is_post()) {
     <p>Please fill this form to create an account.</p>
 
 <form class="form-signin" method="post" >
-    <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required autofocus>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
     <br>
-    <input type="password"  name="password" id="password" class="form-control" placeholder="Password" required>
-    <input type="text"  name="f_name" id="f_name" class="form-control" placeholder="First Name" >
-    <input type="text"  name="l_name" id="l_name" class="form-control" placeholder="Last Name" >
-    <input type="text"  name="m_name" id="m_name" class="form-control" placeholder="Middle Name" >
-    <input type="text"  name="address" id="address" class="form-control" placeholder="Address" >
-    <input type="text"  name="city" id="city" class="form-control" placeholder="City" >
-    <input type="text"  name="state" id="state" class="form-control" placeholder="State" >
-    <input type="text"  name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode" >
-    <input type="text"  name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number">
-    <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" >
+    <input type="password"  name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="text"  name="f_name" id="inputPassword" class="form-control" placeholder="First Name" required>
+    <input type="text"  name="l_name" id="inputPassword" class="form-control" placeholder="Last Name" required>
+    <input type="text"  name="m_name" id="inputPassword" class="form-control" placeholder="Middle Name">
+    <input type="text"  name="address" id="inputPassword" class="form-control" placeholder="Address">
+    <input type="text"  name="city" id="inputPassword" class="form-control" placeholder="City">
+    <input type="text"  name="state" id="inputPassword" class="form-control" placeholder="State">
+    <input type="text"  name="zipcode" id="inputPassword" class="form-control" placeholder="Zipcode">
+    <input type="text"  name="phone_number" id="inputPassword" class="form-control" placeholder="Phone Number">
+    <input type="date" name="dob" id="inputdob" class="form-control" placeholder="Date of Birth" / required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    <p class="mt-5 mb-3 text-muted">&copy; <?php echo Date('Y'); ?> </p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
     <a href="register.php">Register account</a>
 </form>
 

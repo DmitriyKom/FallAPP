@@ -25,12 +25,12 @@ body {
 }
 
 .main-bg-cover {
-  background: url('/FallAPP/FallAPP/metromed/public/assets/images/background_image.jpg') no-repeat center center;
+  background: url('../images/background_image.jpg') no-repeat center center;
   background-position: 0% 50%;
   background-size: cover;
 }
 .about-bg-cover {
-  background: url('/FallAPP/FallAPP/metromed/public/assets/images/puzzle.jpg') no-repeat center center;
+  background: url('../images/puzzle.jpg') no-repeat center center;
   background-position: 0% 75%;
   background-size: cover;
   padding-top: 10%;
@@ -38,7 +38,7 @@ body {
 }
 
 .services-bg-cover {
-  background: url('/metromed/public/assets/images/staff.jpg') no-repeat center center;
+  background: url('../images/staff.jpg') no-repeat center center;
   background-position: 0% 10%;
   background-size: cover;
   padding-top: 10%;
@@ -46,7 +46,7 @@ body {
 }
 
 .careers-bg-cover {
-  background: url('/FallAPP/FallAPP/metromed/public/assets/images/careers.jpg') no-repeat center center;
+  background: url('../images/careers.jpg') no-repeat center center;
   background-position: 0% 20%;
   background-size: cover;
   padding-top: 10%;
@@ -54,7 +54,7 @@ body {
 }
 
 .community2-bg-cover {
-  background: url('/FallAPP/FallAPP/metromed/public/assets/images/community2.jpg') no-repeat center center;
+  background: url('../images/community2.jpg') no-repeat center center;
   background-position: 0% 50%;
   background-size: cover;
   padding-top: 10%;
