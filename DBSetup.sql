@@ -134,6 +134,40 @@ CREATE TABLE bill (
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
 );
 
+CREATE TABLE doctor (
+    user_id int NOT NULL AUTO_INCREMENT ,
+    f_name varchar(50) NOT NULL,
+    l_name varchar(50) NOT NULL,
+    address varchar(255) NOT NULL,
+    city varchar(50) NOT NULL,
+    state varchar(50) NOT NULL,
+    zip varchar(50) NOT NULL,
+    phone_number bigint NOT NULL,
+    PRIMARY KEY (user_id)
+);
+
+INSERT INTO doctor (
+    f_name,
+    l_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number
+    )
+VALUES("Hans","Gruber","145 West 29th Street Suite 451","St. Paul", "MN", "55012", "7634434200");
+
+INSERT INTO doctor (
+    f_name,
+    l_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number
+    )
+VALUES("John","McLane","145 West 29th Street Suite 451","St. Paul", "MN", "55012", "7634434209");
+
 INSERT INTO insurance (ins_id, ins_co)
 VALUES (1, "medica"),(2, "unitedhealthcare"),(3, "bluecross/blueshield"),(4, "cigna"),(5, "tricare"),
 (6, "medicare"),(7, "medicaid"),(8, "healthpartners"),(9, "aetna");

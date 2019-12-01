@@ -25,20 +25,20 @@ $page_title = 'View Patient';
 
   <div class="subject show">
 
-    <h1>Patient Details: <?php echo h($patient['f_name'] . " " . $patient['l_name'] ); ?></h1>
+    <h1>Patient Details: <?php echo ucfirst(h($patient['f_name']) . " ". ucfirst($patient['l_name'] )); ?></h1>
 
     <div class="attributes">
       <dl>
         <dt>First Name</dt>
-        <dd><?php echo h($patient['f_name'] ? $patient['f_name'] : 'false'); ?></dd>
+        <dd><?php echo ucfirst(h($patient['f_name'] ? $patient['f_name'] : 'false')); ?></dd>
       </dl>
       <dl>
         <dt>Last Name</dt>
-        <dd><?php echo h($patient['l_name'] ? $patient['l_name'] : 'false'); ?></dd>
+        <dd><?php echo ucfirst(h($patient['l_name'] ? $patient['l_name'] : 'false')); ?></dd>
       </dl>
       <dl>
         <dt>Middle Initial</dt>
-        <dd><?php echo h($patient['m_name'] ? $patient['m_name'] : 'false'); ?></dd>
+        <dd><?php echo ucfirst(h($patient['m_name'] ? $patient['m_name'] : 'false')); ?></dd>
       </dl>
       <dl>
         <dt>Address</dt>
@@ -58,7 +58,7 @@ $page_title = 'View Patient';
       </dl>
       <dl>
         <dt>Phone Number</dt>
-        <dd><?php echo h($patient['phone_number'] ? $patient['phone_number'] : 'false'); ?></dd>
+        <dd><?php echo phone_number_format(h($patient['phone_number']) ? phone_number_format($patient['phone_number']) : 'false'); ?></dd>
       </dl>
       <dl>
         <dt>DOB</dt>

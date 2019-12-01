@@ -41,7 +41,7 @@ if($_SESSION['role'] != '3'){
           <td><?php echo h($patient['f_name']); ?></td>
           <td><?php echo h($patient['l_name']); ?></td>
     	    <td><?php echo h($patient['m_name']); ?></td>
-          <td><?php echo h($patient['phone_number']); ?></td>
+          <td><?php echo phone_number_format(h($patient['phone_number'])); ?></td>
 
           <td><a class="action" href="<?php echo url_for('/administrator/patients/view.php?user_id=' . h(u($patient['user_id']))); ?>">View</a></td>
           <td><a class="action" href="<?php echo url_for('/administrator/patients/edit.php?user_id=' . h(u($patient['user_id']))); ?>">Edit</a></td>
