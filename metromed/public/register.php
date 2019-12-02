@@ -76,7 +76,8 @@
                     $insert_user_query = "INSERT INTO user(email, password) VALUES(
                 " . '"' . $email . '"' . "," . '"' . $password . '"' . ")";
                     if (mysqli_query($db, $insert_user_query)) {
-                        echo "Thank you for registering";
+                        // echo "Thank you for registering";
+                        header("location: register_confirm.php");
                     } else {
                         echo "ERROR: Not able to execute sql2. "
                             . mysqli_error($db);

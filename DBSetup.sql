@@ -28,7 +28,7 @@ CREATE TABLE user_info (
     user_id int NOT NULL AUTO_INCREMENT ,
     f_name varchar(50) NOT NULL,
     l_name varchar(50) NOT NULL,
-    m_name varchar(50) DEFAULT NULL,
+    m_name varchar(50),
     address varchar(255) NOT NULL,
     city varchar(50) NOT NULL,
     state varchar(50) NOT NULL,
@@ -238,11 +238,9 @@ INSERT INTO user_info(
     state,
     zip,
     phone_number,
-    dob,
-    ins_id,
-    policy_number
+    dob
 )
-VALUES("christian","mortenson","wayne","86345 westaward way","hanover","mn",55118,7638576523,"1980-01-13","","");
+VALUES("christian","mortenson","wayne","86345 westaward way","hanover","mn",55118,7638576523,"1980-01-13");
 
 INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
-VALUES ('mellisa@gmail.com', '1234', '3', '1');
+VALUES ('christian.mortenson@gmail.com', '1234', 2, 1);

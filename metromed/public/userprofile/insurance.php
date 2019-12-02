@@ -31,7 +31,7 @@ if(is_post()) {
     <div class="list-group list-group-flush">
       <a href="<?php echo url_for('userprofile/index.php') ?>" class="list-group-item list-group-item-action bg-light">My Profile</a>
       <a href="<?php echo url_for('userprofile/insurance.php') ?>" class="list-group-item list-group-item-action active">Insurance</a>
-      <a href="<?php echo url_for('booking/appointment.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
+      <a href="<?php echo url_for('userprofile/appointment.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
     </div>
   </div>
 

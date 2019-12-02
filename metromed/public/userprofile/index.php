@@ -37,9 +37,20 @@ if(is_post()) {
 <div class="d-flex pt-5" id="wrapper">
   <div class="bg-light border-right" id="sidebar-left">
     <div class="list-group list-group-flush">
+
       <a href="<?php echo url_for('userprofile/index.php') ?>" class="list-group-item list-group-item-action active">My Profile</a>
-      <a href="<?php echo url_for('userprofile/insurance.php') ?>" class="list-group-item list-group-item-action bg-light">Insurance</a>
-      <a href="<?php echo url_for('booking/appointment.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
+
+      <?php
+        if ($_SESSION['role'] == "1") {
+          echo '<a href="';
+          echo url_for('userprofile/insurance.php');
+          echo '"';
+          echo 'class="list-group-item list-group-item-action active">Insurance</a>';
+        }
+      ?>
+
+      <a href="<?php echo url_for('userprofile/appointment.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
+
       <?php
         if ($_SESSION['role'] == "3") {
           echo '<a href="';
