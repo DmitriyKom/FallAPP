@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+      <p class="mt-5 mb-3 text-muted">&copy; <?php echo Date('Y'); ?> </p>
         <a href="register.php">Register account</a>
     </form>
 
