@@ -100,15 +100,15 @@
     <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required autofocus>
     <br>
     <input type="password"  name="password" id="password" class="form-control" placeholder="Password" required>
-    <input type="text"  name="f_name" id="f_name" class="form-control" placeholder="First Name" >
-    <input type="text"  name="l_name" id="l_name" class="form-control" placeholder="Last Name" >
-    <input type="text"  name="m_name" id="m_name" class="form-control" placeholder="Middle Name" >
-    <input type="text"  name="address" id="address" class="form-control" placeholder="Address" >
-    <input type="text"  name="city" id="city" class="form-control" placeholder="City" >
-    <input type="text"  name="state" id="state" class="form-control" placeholder="State" >
-    <input type="text"  name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode" >
-    <input type="text"  name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number">
-    <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" >
+    <input type="text"  name="f_name" id="f_name" class="form-control" placeholder="First Name" required>
+    <input type="text"  name="l_name" id="l_name" class="form-control" placeholder="Last Name" required>
+    <input type="text"  name="m_name" id="m_name" class="form-control" placeholder="Middle Name" required>
+    <input type="text"  name="address" id="address" class="form-control" placeholder="Address" required>
+    <input type="text"  name="city" id="city" class="form-control" placeholder="City" required>
+    <input type="text"  name="state" id="state" class="form-control" placeholder="State" required>
+    <input type="text"  name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode" required>
+    <input type="text"  name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number" required>
+    <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     <br />
     <?php echo "Already have an account?" ?>
