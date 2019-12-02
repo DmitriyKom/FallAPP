@@ -41,9 +41,9 @@ include(SHARED_PATH . '/metromed_header.php');
 
           <label for="docName">Doctor</label>
 
-          <select name="docName" value="" id="docName">
+          <select name="doc_id" id="docName">
             <?php while($provider = mysqli_fetch_assoc($provider_set)) { ?>
-                <option value=" <?php echo h($provider['f_name']) . h($provider['l_name']) ?>"><?php echo h(ucwords($provider['f_name'])) . " " . h(ucwords($provider['l_name'])) ?></option>
+                <option value="<?php echo h($provider['user_id']) ?>"><?php echo h(ucwords($provider['f_name'])) . " " . h(ucwords($provider['l_name'])) ?></option>
             <?php } ?>
           </select>
 

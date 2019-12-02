@@ -1,9 +1,18 @@
-<?php require_once('../../private/initialize.php'); ?>
-<?php require_once('../../private/calendar_functions.php'); ?>
+<?php
 
-<?php $page_title = 'Appointments'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+  require_once('../../private/initialize.php');
+  require_once('../../private/calendar_functions.php');
 
+  include(SHARED_PATH . '/metromed_header.php');
+
+  //Restrict page to administrators
+  if($_SESSION['loggedin'] = true){
+    redirect_to(url_for('/index.php'));
+  }
+
+  $page_title = 'Appointments';
+
+?>
 
 <div class="d-flex pt-5" id="wrapper">
   <div class="bg-light border-right" id="sidebar-left">
@@ -16,7 +25,7 @@
           echo '<a href="';
           echo url_for('userprofile/insurance.php');
           echo '"';
-          echo 'class="list-group-item list-group-item-action active">Insurance</a>';
+          echo 'class="list-group-item list-group-item-action bg-light">Insurance</a>';
         }
       ?>
 

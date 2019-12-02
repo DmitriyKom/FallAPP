@@ -4,6 +4,11 @@ require_once('../../private/initialize.php');
 
 include(SHARED_PATH . '/metromed_header.php');
 
+//Restrict page to administrators
+if($_SESSION['loggedin'] = true){
+  redirect_to(url_for('/index.php'));
+}
+
 $page_title = 'User Insurance';
 
 $u_id = $_SESSION['user_id'];

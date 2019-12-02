@@ -14,7 +14,7 @@
   function find_all_providers() {
     global $db;
 
-    $sql = "SELECT i.f_name, i.l_name FROM user_info i INNER JOIN user u ON i.user_id = u.user_id ";
+    $sql = "SELECT i.f_name, i.l_name, i.user_id FROM user_info i INNER JOIN user u ON i.user_id = u.user_id ";
     $sql .= "WHERE u.role='2' ";
     $sql .= "ORDER BY i.f_name ASC";
     $sql .= ";";
@@ -36,7 +36,7 @@
 
     $query = "INSERT INTO appointment (user_id, doc_id, app_dt) VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($db, $query);
-    echo $query;
+    // echo $query;
     $bind = mysqli_stmt_bind_param($stmt, 'sss', $user_id, $doc_id, $app_date);
     // echo $bind;
     mysqli_stmt_execute($stmt);

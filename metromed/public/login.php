@@ -42,14 +42,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     header("location: userprofile/index.php");
                                     break;
                                 case "2":
-                                    header("location: userprofile/index.php");
+                                    redirect_to('userprofile/index.php');
                                     break;
                                 case "3":
-                                    header("location: userprofile/index.php");
-                                    // header("location: administrator/index.php");
+                                    redirect_to('userprofile/index.php');
                                     break;
                                 default:
-                                    header("location: index.php");}
+                                    redirect_to('index.php');}
                         } else{
                             echo "The password you entered was not valid.";
                         }
@@ -83,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <br />
       <?php echo "Don't have an account yet?" ?>
-        <a href="register.php">Register here</a>
+        <a href="<?php echo url_for('register.php') ?>">Register here</a>
     </form>
 
 

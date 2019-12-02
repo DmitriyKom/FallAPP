@@ -113,7 +113,7 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     <br />
     <?php echo "Already have an account?" ?>
-    <a href="login.php">Sign in</a>
+    <a href="<?php echo url_for('login.php') ?>">Sign in</a>
   </form>
 
 
