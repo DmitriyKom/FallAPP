@@ -8,11 +8,11 @@ if($_SESSION['role'] != '3'){
   redirect_to(url_for('/index.php'));
 }
 
-  $patient_set = find_all_patients();
+  $patient_set = find_all_administrators();
   // echo $patient_set;
 ?>
 
-<?php $page_title = 'Patients'; ?>
+<?php $page_title = 'Administrators'; ?>
 
 <div class="d-flex pt-5" id="wrapper">
   <div class="bg-light border-right" id="sidebar-left">
@@ -34,20 +34,27 @@ if($_SESSION['role'] != '3'){
       <?php
         if ($_SESSION['role'] == "3") {
           echo '<a href="';
-          echo url_for('administrator/patients/index.php');
+          echo url_for('administrator/patients/show_patients.php');
           echo '"';
-          echo 'class="list-group-item list-group-item-action active">Patients</a>';
+          echo 'class="list-group-item list-group-item-action bg-light">Patients</a>';
         }
       ?>
       <?php
         if ($_SESSION['role'] == "3") {
           echo '<a href="';
-          echo url_for('administrator/patients/show_patients.php');
+          echo url_for('administrator/patients/show_providers.php');
           echo '"';
-          echo 'class="list-group-item list-group-item-action bg-light">Patients_Test</a>';
+          echo 'class="list-group-item list-group-item-action bg-light">Providers</a>';
         }
       ?>
-
+      <?php
+        if ($_SESSION['role'] == "3") {
+          echo '<a href="';
+          echo url_for('administrator/patients/show_administrators.php');
+          echo '"';
+          echo 'class="list-group-item list-group-item-action active">Administrators</a>';
+        }
+      ?>
     </div>
   </div>
 
@@ -56,10 +63,10 @@ if($_SESSION['role'] != '3'){
 
   <div id="content">
     <div class="subjects listing">
-      <h1>Patients</h1>
+      <h1>Administrators</h1>
 
       <div class="actions">
-        <a class="actions" href="<?php echo url_for('/administrator/patients/new.php'); ?>">Add New Patient</a>
+        <a class="actions" href="<?php echo url_for('/administrator/patients/new.php'); ?>">Add New Administrator</a>
       </div>
 
     	<table class="list">

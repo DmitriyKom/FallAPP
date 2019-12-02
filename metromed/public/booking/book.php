@@ -6,9 +6,11 @@ $page_title = 'Book';
 
 include(SHARED_PATH . '/metromed_header.php');
 
-  if (isset($_GET['date'])) {
-    $date = $_GET['date'];
+  if (!isset($_GET['date'])) {
+    redirect_to(url_for('userprofile/appointment.php'));
   }
+
+  $date = $_GET['date'];
 
   if (is_post()) {
     $appointment = [];
@@ -21,7 +23,7 @@ include(SHARED_PATH . '/metromed_header.php');
   }
 
   $f_name = find_user_by_id_3($_SESSION['user_id']);
-  $provider_set = find_all_providers();
+  $provider_set = find_all_provider_names();
 ?>
 
 <div class="container">

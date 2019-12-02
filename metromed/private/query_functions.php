@@ -11,7 +11,46 @@
     return $result;
   }
 
+  function find_all_patients_2() {
+    global $db;
+
+    $sql = "SELECT i.* FROM user_info i INNER JOIN user u ON i.user_id = u.user_id ";
+    $sql .= "WHERE u.role='1' ";
+    $sql .= "ORDER BY i.user_id ASC";
+    $sql .= ";";
+    // echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
   function find_all_providers() {
+    global $db;
+
+    $sql = "SELECT i.* FROM user_info i INNER JOIN user u ON i.user_id = u.user_id ";
+    $sql .= "WHERE u.role='2' ";
+    $sql .= "ORDER BY i.user_id ASC";
+    $sql .= ";";
+    // echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
+  function find_all_administrators() {
+    global $db;
+
+    $sql = "SELECT i.* FROM user_info i INNER JOIN user u ON i.user_id = u.user_id ";
+    $sql .= "WHERE u.role='3' ";
+    $sql .= "ORDER BY i.user_id ASC";
+    $sql .= ";";
+    // echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
+  function find_all_provider_names() {
     global $db;
 
     $sql = "SELECT i.f_name, i.l_name, i.user_id FROM user_info i INNER JOIN user u ON i.user_id = u.user_id ";

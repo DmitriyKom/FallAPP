@@ -6,7 +6,7 @@
   include(SHARED_PATH . '/metromed_header.php');
 
   //Restrict page to administrators
-  if($_SESSION['loggedin'] = true){
+  if($_SESSION['loggedin'] != true){
     redirect_to(url_for('/index.php'));
   }
 
@@ -34,9 +34,25 @@
       <?php
         if ($_SESSION['role'] == "3") {
           echo '<a href="';
-          echo url_for('administrator/patients/index.php');
+          echo url_for('administrator/patients/show_patients.php');
           echo '"';
           echo 'class="list-group-item list-group-item-action bg-light">Patients</a>';
+        }
+      ?>
+      <?php
+        if ($_SESSION['role'] == "3") {
+          echo '<a href="';
+          echo url_for('administrator/patients/show_providers.php');
+          echo '"';
+          echo 'class="list-group-item list-group-item-action bg-light">Providers</a>';
+        }
+      ?>
+      <?php
+        if ($_SESSION['role'] == "3") {
+          echo '<a href="';
+          echo url_for('administrator/patients/show_administrators.php');
+          echo '"';
+          echo 'class="list-group-item list-group-item-action bg-light">Administrators</a>';
         }
       ?>
     </div>

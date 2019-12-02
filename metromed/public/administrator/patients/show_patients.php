@@ -8,7 +8,7 @@ if($_SESSION['role'] != '3'){
   redirect_to(url_for('/index.php'));
 }
 
-  $patient_set = find_all_patients();
+  $patient_set = find_all_patients_2();
   // echo $patient_set;
 ?>
 
@@ -34,7 +34,7 @@ if($_SESSION['role'] != '3'){
       <?php
         if ($_SESSION['role'] == "3") {
           echo '<a href="';
-          echo url_for('administrator/patients/index.php');
+          echo url_for('administrator/patients/show_patients.php');
           echo '"';
           echo 'class="list-group-item list-group-item-action active">Patients</a>';
         }
@@ -42,12 +42,19 @@ if($_SESSION['role'] != '3'){
       <?php
         if ($_SESSION['role'] == "3") {
           echo '<a href="';
-          echo url_for('administrator/patients/show_patients.php');
+          echo url_for('administrator/patients/show_providers.php');
           echo '"';
-          echo 'class="list-group-item list-group-item-action bg-light">Patients_Test</a>';
+          echo 'class="list-group-item list-group-item-action bg-light">Providers</a>';
         }
       ?>
-
+      <?php
+        if ($_SESSION['role'] == "3") {
+          echo '<a href="';
+          echo url_for('administrator/patients/show_administrators.php');
+          echo '"';
+          echo 'class="list-group-item list-group-item-action bg-light">Administrators</a>';
+        }
+      ?>
     </div>
   </div>
 
