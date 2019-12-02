@@ -1,7 +1,10 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'Metro Medical Center'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php');
+require_once('../private/initialize.php');
+
+$page_title = 'Metro Medical Center';
+
+include(SHARED_PATH . '/metromed_header.php');
 
 
 $email = "";
@@ -36,13 +39,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             switch($role){
                                 case "1":
                                     echo "You have logged in";
-                                    header("location: userprofile.php");
+                                    header("location: userprofile/index.php");
                                     break;
                                 case "2":
-                                    header("location: contact.php");
+                                    header("location: userprofile/index.php");
                                     break;
                                 case "3":
-                                    header("location: administrator/index.php");
+                                    header("location: userprofile/index.php");
+                                    // header("location: administrator/index.php");
                                     break;
                                 default:
                                     header("location: index.php");}

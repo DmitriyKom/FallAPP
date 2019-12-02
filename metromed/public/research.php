@@ -1,9 +1,11 @@
-<?php 
+<?php
 
-require_once('../private/initialize.php');
+  require_once('../private/initialize.php');
 
-$page_title = 'Privacy Policy';
-include(SHARED_PATH . '/metromed_header.php'); 
+  $page_title = 'Privacy Policy';
+
+  include(SHARED_PATH . '/metromed_header.php');
+
 ?>
 </div>
   <img class="center" src="assets/images/research.jpg" width="250" height="250" alt="Card image cap">
@@ -16,10 +18,10 @@ include(SHARED_PATH . '/metromed_header.php');
     relentlessly pursue discoveries that deliver hope and better health to people today and for generations to come.
 </h5><br />
 <h5 class="research">
-    Researchers and physician-scientists work side by side to transform scientific discoveries into breakthrough 
+    Researchers and physician-scientists work side by side to transform scientific discoveries into breakthrough
     therapies and critical advances in patient care.
 </h5><br />
-<h5 class="research"> 
+<h5 class="research">
     Metro Medical's research accelerates the discovery, translation and application <br />
     of life-changing therapies, surgical procedures and technologies so patients receive exactly the care they need when it's needed.
 </h5>

@@ -1,17 +1,17 @@
 <?php
 
-require_once('../private/initialize.php');
+  require_once('../private/initialize.php');
 
-$page_title = 'Metro Medical Center';
+  $page_title = 'Metro Medical Center';
 
-include(SHARED_PATH . '/metromed_header.php');
+  include(SHARED_PATH . '/metromed_header.php');
 
 ?>
 
     <div class="jumbotron jumbotron main-bg-cover">
       <h1>Welcome</h1>
 
-      <?php if($_SESSION['loggedin'] == true){
+      <?php if($_SESSION['role'] == "1"){
         echo '<p><a class="btn btn-lg btn-primary" href="';
         echo url_for('booking/appointment.php');
         echo '">Schedule an appointment</a></p>';

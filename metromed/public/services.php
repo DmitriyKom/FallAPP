@@ -1,8 +1,12 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'Services'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+  require_once('../private/initialize.php');
 
+  $page_title = 'Services';
+
+  include(SHARED_PATH . '/metromed_header.php');
+
+?>
 
   <div class="services-info">
     <div class="jumbotron jumbotron services-bg-cover">

@@ -40,6 +40,14 @@ if(is_post()) {
       <a href="<?php echo url_for('userprofile/index.php') ?>" class="list-group-item list-group-item-action active">My Profile</a>
       <a href="<?php echo url_for('userprofile/insurance.php') ?>" class="list-group-item list-group-item-action bg-light">Insurance</a>
       <a href="<?php echo url_for('booking/appointment.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
+      <?php
+        if ($_SESSION['role'] == "3") {
+          echo '<a href="';
+          echo url_for('administrator/patients/index.php');
+          echo '"';
+          echo 'class="list-group-item list-group-item-action bg-light">Patients</a>';
+        }
+      ?>
     </div>
   </div>
 

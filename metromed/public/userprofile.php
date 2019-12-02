@@ -1,36 +1,36 @@
 <?php
 
-require_once('../private/initialize.php');
+  require_once('../private/initialize.php');
 
-include(SHARED_PATH . '/metromed_header.php');
+  include(SHARED_PATH . '/metromed_header.php');
 
-$page_title = 'User Profile';
+  $page_title = 'User Profile';
 
-$u_id = $_SESSION['user_id'];
+  $u_id = $_SESSION['user_id'];
 
-if(is_post()) {
+  if(is_post()) {
 
-  $user = array();
-  $user['f_name'] = $_POST['f_name'] ?? '';
-  $user['f_name'] = $_POST['f_name'] ?? '';
-  $user['l_name'] = $_POST['l_name'] ?? '';
-  $user['m_name'] = $_POST['m_name'] ?? '';
-  $user['address'] = $_POST['address'] ?? '';
-  $user['city'] = $_POST['city'] ?? '';
-  $user['state'] = $_POST['state'] ?? '';
-  $user['zip'] = $_POST['zip'] ?? '';
-  $user['phone_number'] = $_POST['phone_number'] ?? '';
-  $user['user_id'] = $_SESSION['user_id'] ?? '';
-  $user['email'] = $_POST['email'] ?? '';
+    $user = array();
+    $user['f_name'] = $_POST['f_name'] ?? '';
+    $user['f_name'] = $_POST['f_name'] ?? '';
+    $user['l_name'] = $_POST['l_name'] ?? '';
+    $user['m_name'] = $_POST['m_name'] ?? '';
+    $user['address'] = $_POST['address'] ?? '';
+    $user['city'] = $_POST['city'] ?? '';
+    $user['state'] = $_POST['state'] ?? '';
+    $user['zip'] = $_POST['zip'] ?? '';
+    $user['phone_number'] = $_POST['phone_number'] ?? '';
+    $user['user_id'] = $_SESSION['user_id'] ?? '';
+    $user['email'] = $_POST['email'] ?? '';
 
-  $result = update_user($user);
-  redirect_to(url_for('/userprofile.php'));
+    $result = update_user($user);
+    redirect_to(url_for('/userprofile.php'));
 
-} else {
+  } else {
 
-  $user_id = find_user_by_id_2($u_id);
+    $user_id = find_user_by_id_2($u_id);
 
-}
+  }
 
 ?>
 
@@ -40,6 +40,7 @@ if(is_post()) {
       <a href="userprofile.php" class="list-group-item list-group-item-action active">My Profile</a>
       <a href="userprofile/insurance.php" class="list-group-item list-group-item-action bg-light">Insurance</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Appointments</a>
+
 
     </div>
   </div>

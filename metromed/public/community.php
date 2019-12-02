@@ -1,7 +1,12 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'Community'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+  require_once('../private/initialize.php');
+
+  $page_title = 'Community';
+
+  include(SHARED_PATH . '/metromed_header.php');
+
+?>
 
 <div class="community-info">
   <div class="jumbotron jumbotron community2-bg-cover">

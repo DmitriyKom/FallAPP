@@ -63,7 +63,7 @@ if (!isset($page_title)) {
          <?php
          if($_SESSION['loggedin'] == true){
            echo '<a class="p-2 text-primary" href="';
-           echo url_for('userprofile.php');
+           echo url_for('userprofile/index.php');
            echo '">Dashboard</a>';
          }
            ?>

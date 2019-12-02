@@ -1,22 +1,24 @@
 <?php
 
-require_once('../private/initialize.php');
+  require_once('../private/initialize.php');
 
-include(SHARED_PATH . '/metromed_header.php');
+  $page_title = 'Registration';
 
-$email = "";
-$password = "";
-$f_name = "";
-$l_name = "";
-$m_name = "";
-$address = "";
-$city = "";
-$state = "";
-$zipcode = "";
-$phone = "";
-$dob = "";
+  include(SHARED_PATH . '/metromed_header.php');
 
-if (is_post()) {
+  $email = "";
+  $password = "";
+  $f_name = "";
+  $l_name = "";
+  $m_name = "";
+  $address = "";
+  $city = "";
+  $state = "";
+  $zipcode = "";
+  $phone = "";
+  $dob = "";
+
+  if (is_post()) {
     $sql = "SELECT email FROM user WHERE email = '".trim($_POST["email"])."'";
     if ($stmt = mysqli_prepare($db, $sql)) {
         $param_email = trim($_POST["email"]);;
