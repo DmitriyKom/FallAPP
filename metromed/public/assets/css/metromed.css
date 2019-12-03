@@ -162,6 +162,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+#form-labels{
+  text-align: left;
+}
+
 .form-signin .checkbox {
   font-weight: 400;
 }
@@ -198,6 +202,11 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+
+input[type=checkbox] {
+  display: inline-block;
+  margin-right: 1%;
 }
 
 /*
@@ -288,11 +297,6 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=checkbox] {
-  display: inline-block;
-  margin-right: 90%;
-}
-
 /* table {
   table-layout: fixed;
 } */
@@ -349,8 +353,6 @@ table.list tr th {
   margin-bottom: 3px;
 }
 
-input{
-}
   /*
   research page
   */
@@ -362,6 +364,5 @@ input{
   }
 
   .research{
-  text-align: center !important; 
+  text-align: center !important;
   }
-

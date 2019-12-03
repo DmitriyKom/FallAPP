@@ -28,9 +28,9 @@
 
         <label class="label" for="role">Role</label>
         <select name="role" id="role">
-          <option value="1"<?php if($role == "patient") { echo " selected"; } ?>>Patient</option>
-          <option value="2"<?php if($role == "provider") { echo " selected"; } ?>>Provider</option>
-          <option value="3"<?php if($role == "administrator") { echo " selected"; } ?>>Administrator</option>
+          <option value="1"<?php if($role == 1) { echo " selected"; } ?>>Patient</option>
+          <option value="2"<?php if($role == 2) { echo " selected"; } ?>>Provider</option>
+          <option value="3"<?php if($role == 3) { echo " selected"; } ?>>Administrator</option>
         </select>
 
         <label class="label" for="enabled">Enabled</label>

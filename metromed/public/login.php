@@ -1,7 +1,10 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'Metro Medical Center'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php');
+require_once('../private/initialize.php');
+
+$page_title = 'Metro Medical Center';
+
+include(SHARED_PATH . '/metromed_header.php');
 
 
 $email = "";
@@ -36,16 +39,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             switch($role){
                                 case "1":
                                     echo "You have logged in";
-                                    header("location: userprofile.php");
+                                    header("location: userprofile/index.php");
                                     break;
                                 case "2":
-                                    header("location: contact.php");
+                                    redirect_to('userprofile/index.php');
                                     break;
                                 case "3":
-                                    header("location: administrator/index.php");
+                                    redirect_to('userprofile/index.php');
                                     break;
                                 default:
-                                    header("location: index.php");}
+                                    redirect_to('index.php');}
                         } else{
                             echo "The password you entered was not valid.";
                         }
@@ -63,19 +66,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
     <form class="form-signin" method="post" >
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal" id="form-labels">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="Email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password"  name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+      <!-- <div class="checkbox mb-3">
+        <input type="checkbox" value="remember-me">
+        <label>Remember me</label>
+      </div> -->
+      <div style="white-space:nowrap" class="checkbox mb-3">
+        <input type="checkbox" value="remember-me" id="inputRememberMe"/>
+        <label for="inputRememberMe">Remember me</label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; <?php echo Date('Y'); ?> </p>
-        <a href="register.php">Register account</a>
+      <br />
+      <?php echo "Don't have an account yet?" ?>
+        <a href="<?php echo url_for('register.php') ?>">Register here</a>
     </form>
 
 

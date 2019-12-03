@@ -1,7 +1,12 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'Schedule'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+  require_once('../private/initialize.php');
+
+  $page_title = 'Schedule';
+
+  include(SHARED_PATH . '/metromed_header.php');
+
+?>
 
 
     <div class="schedule">

@@ -6,9 +6,11 @@ $page_title = 'Book';
 
 include(SHARED_PATH . '/metromed_header.php');
 
-  if (isset($_GET['date'])) {
-    $date = $_GET['date'];
+  if (!isset($_GET['date'])) {
+    redirect_to(url_for('userprofile/appointment.php'));
   }
+
+  $date = $_GET['date'];
 
   if (is_post()) {
     $appointment = [];
@@ -20,10 +22,14 @@ include(SHARED_PATH . '/metromed_header.php');
     echo "$result";
   }
 
+  $f_name = find_user_by_id_3($_SESSION['user_id']);
+  $provider_set = find_all_provider_names();
 ?>
 
 <div class="container">
-  <h1 class="text-center">Appointment for: <?php echo date('F d, Y',strtotime($date)); ?></h1><hr>
+  <h1 class="text-center">Appointmenmt for: <?php echo h(ucwords($f_name['f_name']. " " .$f_name['l_name'])); ?>
+    <?php echo " on ".date('F d, Y',strtotime($date)); ?></h1><hr>
+
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
@@ -34,8 +40,16 @@ include(SHARED_PATH . '/metromed_header.php');
           <input type="text" class="form-control" name="name">
         </div>
         <div class="form-group">
-          <label for="">Doctor</label>
-          <input type="text" class="form-control" name="doc_id" value="">
+
+          <label for="docName">Doctor</label>
+
+          <select name="doc_id" id="docName">
+            <?php while($provider = mysqli_fetch_assoc($provider_set)) { ?>
+                <option value="<?php echo h($provider['user_id']) ?>"><?php echo h(ucwords($provider['f_name'])) . " " . h(ucwords($provider['l_name'])) ?></option>
+            <?php } ?>
+          </select>
+
+          <!-- <input type="text" class="form-control" name="doc_id" value=""> -->
         </div>
         <!-- <button class="btn btn-primary" type="submit" name="submit">Submit</button> -->
         <div id="operations">

@@ -1,9 +1,12 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'Contact'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+  require_once('../private/initialize.php');
 
+  $page_title = 'Contact';
 
+  include(SHARED_PATH . '/metromed_header.php');
+
+?>
 
     <div class="contact-info">
       <h1>Contact us</h1>

@@ -1,9 +1,12 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
 
-<?php $page_title = 'Careers'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
+  require_once('../private/initialize.php');
 
+  $page_title = 'Careers';
 
+  include(SHARED_PATH . '/metromed_header.php');
+
+?>
 
       <div class="careers-info">
         <div class="jumbotron jumbotron careers-bg-cover">

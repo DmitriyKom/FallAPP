@@ -1,22 +1,24 @@
 <?php
 
-require_once('../private/initialize.php');
+  require_once('../private/initialize.php');
 
-include(SHARED_PATH . '/metromed_header.php');
+  $page_title = 'Registration';
 
-$email = "";
-$password = "";
-$f_name = "";
-$l_name = "";
-$m_name = "";
-$address = "";
-$city = "";
-$state = "";
-$zipcode = "";
-$phone = "";
-$dob = "";
+  include(SHARED_PATH . '/metromed_header.php');
 
-if (is_post()) {
+  $email = "";
+  $password = "";
+  $f_name = "";
+  $l_name = "";
+  $m_name = "";
+  $address = "";
+  $city = "";
+  $state = "";
+  $zipcode = "";
+  $phone = "";
+  $dob = "";
+
+  if (is_post()) {
     $sql = "SELECT email FROM user WHERE email = '".trim($_POST["email"])."'";
     if ($stmt = mysqli_prepare($db, $sql)) {
         $param_email = trim($_POST["email"]);;
@@ -57,7 +59,7 @@ if (is_post()) {
         if (mysqli_query($db, $insert_user_info_query)) {
             echo "Users Information added successfully";
         } else {
-            echo "ERROR: Could not able to execute sql1. "
+            echo "ERROR: Not able to execute sql1. "
                 . mysqli_error($db);
             return false;
         };
@@ -74,9 +76,10 @@ if (is_post()) {
                     $insert_user_query = "INSERT INTO user(email, password) VALUES(
                 " . '"' . $email . '"' . "," . '"' . $password . '"' . ")";
                     if (mysqli_query($db, $insert_user_query)) {
-                        echo "Thank you for registering";
+                        // echo "Thank you for registering";
+                        header("location: register_confirm.php");
                     } else {
-                        echo "ERROR: Could not able to execute sql2. "
+                        echo "ERROR: Not able to execute sql2. "
                             . mysqli_error($db);
                         return false;
                     };
@@ -90,26 +93,28 @@ if (is_post()) {
 }
 ?>
 
-    <h2>Sign Up</h2>
-    <p>Please fill this form to create an account.</p>
+    <!-- <h2>Sign Up</h2> -->
+    <!-- <p>Please fill this form to create an account.</p> -->
 
-<form class="form-signin" method="post" >
+  <form class="form-signin" method="post" >
+    <h1 class="h3 mb-3 font-weight-normal" id="form-labels">Create an account</h1>
     <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required autofocus>
     <br>
     <input type="password"  name="password" id="password" class="form-control" placeholder="Password" required>
-    <input type="text"  name="f_name" id="f_name" class="form-control" placeholder="First Name" >
-    <input type="text"  name="l_name" id="l_name" class="form-control" placeholder="Last Name" >
-    <input type="text"  name="m_name" id="m_name" class="form-control" placeholder="Middle Name" >
-    <input type="text"  name="address" id="address" class="form-control" placeholder="Address" >
-    <input type="text"  name="city" id="city" class="form-control" placeholder="City" >
-    <input type="text"  name="state" id="state" class="form-control" placeholder="State" >
-    <input type="text"  name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode" >
-    <input type="text"  name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number">
-    <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" >
+    <input type="text"  name="f_name" id="f_name" class="form-control" placeholder="First Name" required>
+    <input type="text"  name="l_name" id="l_name" class="form-control" placeholder="Last Name" required>
+    <input type="text"  name="m_name" id="m_name" class="form-control" placeholder="Middle Name" required>
+    <input type="text"  name="address" id="address" class="form-control" placeholder="Address" required>
+    <input type="text"  name="city" id="city" class="form-control" placeholder="City" required>
+    <input type="text"  name="state" id="state" class="form-control" placeholder="State" required>
+    <input type="text"  name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode" required>
+    <input type="text"  name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number" required>
+    <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    <p class="mt-5 mb-3 text-muted">&copy; <?php echo Date('Y'); ?> </p>
-    <a href="register.php">Register account</a>
-</form>
+    <br />
+    <?php echo "Already have an account?" ?>
+    <a href="<?php echo url_for('login.php') ?>">Sign in</a>
+  </form>
 
 
 

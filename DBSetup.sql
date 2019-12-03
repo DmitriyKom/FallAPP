@@ -28,15 +28,15 @@ CREATE TABLE user_info (
     user_id int NOT NULL AUTO_INCREMENT ,
     f_name varchar(50) NOT NULL,
     l_name varchar(50) NOT NULL,
-    m_name varchar(50) NOT NULL,
+    m_name varchar(50),
     address varchar(255) NOT NULL,
     city varchar(50) NOT NULL,
     state varchar(50) NOT NULL,
     zip varchar(50) NOT NULL,
     phone_number bigint NOT NULL,
-    dob DATE,
-    ins_id int NOT NULL,
-    policy_number varchar(50),
+    dob DATE NOT NULL,
+    ins_id int DEFAULT NULL,
+    policy_number varchar(50) DEFAULT NULL,
     PRIMARY KEY (user_id),
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
@@ -46,7 +46,8 @@ CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     email varchar(50) NOT NULL UNIQUE KEY,
     password varchar(255) NOT NULL,
-    role varchar(15) DEFAULT NULL,
+    role tinyint DEFAULT 1,
+    CHECK (role BETWEEN 1 AND 3),
     enabled int DEFAULT NULL,
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES user_info(user_id)
@@ -261,3 +262,19 @@ VALUES("Michael","Scott","","","","",51298,7029982327,"1999-03-01",1,"9988123");
 
 INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
 VALUES ('m.scott@hotmail.com', '1111', '1', '1');
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob
+)
+VALUES("christian","mortenson","wayne","86345 westaward way","hanover","mn",55118,7638576523,"1980-01-13");
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('christian.mortenson@gmail.com', '1234', 2, 1);

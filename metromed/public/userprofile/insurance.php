@@ -4,6 +4,11 @@ require_once('../../private/initialize.php');
 
 include(SHARED_PATH . '/metromed_header.php');
 
+//Restrict page to administrators
+if($_SESSION['loggedin'] != true){
+  redirect_to(url_for('/index.php'));
+}
+
 $page_title = 'User Insurance';
 
 $u_id = $_SESSION['user_id'];
@@ -31,7 +36,7 @@ if(is_post()) {
     <div class="list-group list-group-flush">
       <a href="<?php echo url_for('userprofile/index.php') ?>" class="list-group-item list-group-item-action bg-light">My Profile</a>
       <a href="<?php echo url_for('userprofile/insurance.php') ?>" class="list-group-item list-group-item-action active">Insurance</a>
-      <a href="<?php echo url_for('booking/appointment.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
+      <a href="<?php echo url_for('userprofile/appointment.php') ?>" class="list-group-item list-group-item-action bg-light">Appointments</a>
     </div>
   </div>
 

@@ -1,15 +1,16 @@
 <?php
 
-require_once('../private/initialize.php');
+  require_once('../private/initialize.php');
 
-$page_title = 'Log Out';
-include(SHARED_PATH . '/metromed_header.php');
+  $page_title = 'Log Out';
 
+  include(SHARED_PATH . '/metromed_header.php');
 
-// Test if they *were* logged in
+  // Test if they *were* logged in
   $old_user = $_SESSION['loggedin'];
   unset($_SESSION['loggedin']);
   session_destroy();
+
 ?>
 
 <!-- <h1>Log Out</h1> -->
