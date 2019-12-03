@@ -72,22 +72,22 @@ if($_SESSION['role'] != '3'){
     	    <th>&nbsp;</th>
     	    <th>&nbsp;</th>
           <th>&nbsp;</th>
+  	    </tr>
+
+      <?php while($patient = mysqli_fetch_assoc($patient_set)) { ?>
+        <tr>
+          <td><?php echo h($patient['user_id']); ?></td>
+          <td><?php echo h($patient['f_name']); ?></td>
+          <td><?php echo h($patient['l_name']); ?></td>
+    	    <td><?php echo h($patient['m_name']); ?></td>
+          <td><?php echo phone_number_format(h($patient['phone_number'])); ?></td>
+
+          <td><a class="action" href="<?php echo url_for('/administrator/patients/view.php?user_id=' . h(u($patient['user_id']))); ?>">View</a></td>
+          <td><a class="action" href="<?php echo url_for('/administrator/patients/edit.php?user_id=' . h(u($patient['user_id']))); ?>">Edit</a></td>
+          <td><a class="action" href="<?php echo url_for('/administrator/patients/remove.php?user_id=' . h(u($patient['user_id']))); ?>">Delete</a></td>
     	  </tr>
-
-        <?php while($patient = mysqli_fetch_assoc($patient_set)) { ?>
-          <tr>
-            <td><?php echo h($patient['user_id']); ?></td>
-            <td><?php echo h($patient['f_name']); ?></td>
-            <td><?php echo h($patient['l_name']); ?></td>
-      	    <td><?php echo h($patient['m_name']); ?></td>
-            <td><?php echo h($patient['phone_number']); ?></td>
-
-            <td><a class="action" href="<?php echo url_for('/administrator/patients/view.php?user_id=' . h(u($patient['user_id']))); ?>">View</a></td>
-            <td><a class="action" href="<?php echo url_for('/administrator/patients/edit.php?user_id=' . h(u($patient['user_id']))); ?>">Edit</a></td>
-            <td><a class="action" href="<?php echo url_for('/administrator/patients/remove.php?user_id=' . h(u($patient['user_id']))); ?>">Delete</a></td>
-      	  </tr>
-        <?php } ?>
-    	</table>
+      <?php } ?>
+    </table>
 
       <?php mysqli_free_result($patient_set); ?>
     </div>

@@ -36,8 +36,8 @@ include(SHARED_PATH . '/metromed_header.php');
       <form action="<?php echo url_for('/booking/book.php?date=' . h(u($date))); ?>" method="post" autocomplete="off">
 
         <div class="form-group">
-          <label for="">Name</label>
-          <input type="text" class="form-control" name="user_id">
+          <label for="">Patient Name</label>
+          <input type="text" class="form-control" name="name">
         </div>
         <div class="form-group">
 
