@@ -27,7 +27,7 @@ include(SHARED_PATH . '/metromed_header.php');
 ?>
 
 <div class="container">
-  <h1 class="text-center">Appointmenmt for: <?php echo h(ucwords($f_name['f_name']. " " .$f_name['l_name'])); ?>
+  <h1 class="text-center">Appointment for: <?php echo h(ucwords($f_name['f_name']. " " .$f_name['l_name'])); ?>
     <?php echo " on ".date('F d, Y',strtotime($date)); ?></h1><hr>
 
   <div class="row">
