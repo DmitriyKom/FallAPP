@@ -42,7 +42,6 @@ CREATE TABLE user_info (
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
 
-
 CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     email varchar(50) NOT NULL UNIQUE KEY,
@@ -54,33 +53,38 @@ CREATE TABLE user (
     FOREIGN KEY (user_id) REFERENCES user_info(user_id)
 );
 
+CREATE TABLE service (
+  service_id int NOT NULL AUTO_INCREMENT,
+  service varchar(100),
+  service_amount int,
+  PRIMARY KEY (service_id)
+);
+
+CREATE TABLE provider (
+    provider_id int NOT NULL AUTO_INCREMENT,
+    user_id int NOT NULL,
+    specialty int,
+    PRIMARY KEY (provider_id),
+    FOREIGN KEY (user_id) REFERENCES user_info(user_id),
+    FOREIGN KEY (specialty) REFERENCES service(service_id)
+);
 
 CREATE TABLE appointment (
     app_id int NOT NULL AUTO_INCREMENT,
     user_id int,
     doc_id int,
     app_dt DATE,
-    app_time DATE,
+    app_time int,
     PRIMARY KEY (app_id),
     FOREIGN KEY (user_id) REFERENCES user_info(user_id),
-    FOREIGN KEY (doc_id) REFERENCES user_info(user_id)
+    FOREIGN KEY (doc_id) REFERENCES provider(provider_id)
 );
-
-
-CREATE TABLE service (
-    service_id int NOT NULL AUTO_INCREMENT,
-    service varchar(100),
-    service_amount int,
-    PRIMARY KEY (service_id)
-);
-
 
 CREATE TABLE clinic (
     clinic_id int NOT NULL AUTO_INCREMENT,
     clinic_name varchar(100),
     PRIMARY KEY (clinic_id)
 );
-
 
 CREATE TABLE preference (
     pref_id int NOT NULL AUTO_INCREMENT,
@@ -99,7 +103,6 @@ CREATE TABLE preference (
     FOREIGN KEY (service_id_3) REFERENCES service(service_id)
 );
 
-
 CREATE TABLE clinic_services (
     cs_id int NOT NULL AUTO_INCREMENT,
     clinic_id int,
@@ -108,7 +111,6 @@ CREATE TABLE clinic_services (
     FOREIGN KEY (service_id) REFERENCES service(service_id),
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
 );
-
 
 CREATE TABLE payments (
     payment_id int NOT NULL AUTO_INCREMENT,
@@ -119,7 +121,6 @@ CREATE TABLE payments (
     PRIMARY KEY (payment_id),
     FOREIGN KEY (ins_id) REFERENCES insurance(ins_id)
 );
-
 
 CREATE TABLE bill (
     bill_id int NOT NULL AUTO_INCREMENT,
@@ -136,14 +137,6 @@ CREATE TABLE bill (
     FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
 );
 
-CREATE TABLE provider (
-    provider_id int NOT NULL AUTO_INCREMENT,
-    user_id int NOT NULL,
-    specialty int,
-    PRIMARY KEY (provider_id),
-    FOREIGN KEY (user_id) REFERENCES user_info(user_id),
-    FOREIGN KEY (specialty) REFERENCES service(service_id)
-);
 
 INSERT INTO service (service, service_amount)
 VALUES ("primary care", 10),("obgyn", 10),("pediatrics", 10),("nutrition", 10),("geriatrics", 10);
@@ -339,3 +332,18 @@ INSERT INTO provider (
   specialty
     )
 VALUES((SELECT max(user_id) FROM user_info),('1'));
+
+
+
+INSERT INTO appointment (user_id,doc_id,app_dt,app_time)
+VALUES ('1', '1', '2019-12-31', '11');
+INSERT INTO appointment (user_id,doc_id,app_dt,app_time)
+VALUES ('2', '1', '2019-12-22', '12');
+INSERT INTO appointment (user_id,doc_id,app_dt,app_time)
+VALUES ('3', '1', '2019-12-22', '13');
+INSERT INTO appointment (user_id,doc_id,app_dt,app_time)
+VALUES ('4', '1', '2019-12-22', '14');
+INSERT INTO appointment (user_id,doc_id,app_dt,app_time)
+VALUES ('5', '1', '2019-12-22', '15');
+INSERT INTO appointment (user_id,doc_id,app_dt,app_time)
+VALUES ('7', '1', '2019-12-22', '16');

@@ -1,14 +1,24 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php
 
+require_once('../../private/initialize.php');
+
+$page_title = 'Booking_Attempt_2';
+
+include(SHARED_PATH . '/metromed_header.php');
+
+if (!isset($_GET['date'])) {
+  redirect_to(url_for('userprofile/appointment.php'));
+}
+
+$date = $_GET['date'];
+
+?>
 
 <head>
   <script type="text/javascript" src="jquery.min.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="mtb.js"></script>
+  <script type="text/javascript" src="motherOfAllLearningCurves.js"></script>
 </head>
-
-<?php $page_title = 'Booking_Attempt_2'; ?>
-<?php include(SHARED_PATH . '/metromed_header.php'); ?>
 
   <div class="community-info">
     <div class="jumbotron jumbotron community2-bg-cover">

@@ -26,11 +26,13 @@ $(document).ready(function() {
   //generate dropdown options for state dropdown
   $(document).on('change','#provider', function() {
     var provider_id = $(this).val();
+    let params = (new URL(document.location)).searchParams;
+    let date = params.get("date");
     if(provider_id != "") {
       $.ajax({
         url:"get_services.php",
         type:'POST',
-        data:{provider_id:provider_id},
+        data:{provider_id:provider_id, date:date},
         success:function(response) {
           //var resp = $.trim(response);
           if(response != '') {
