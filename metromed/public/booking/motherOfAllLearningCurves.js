@@ -12,14 +12,14 @@ $(document).ready(function() {
           //var resp = $.trim(response);
           if(response != '') {
             $("#provider").removeAttr('disabled','disabled').html(response);
-            $("#state").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
+            $("#app_time").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
           } else {
-           $("#provider, #state").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
+           $("#provider, #app_time").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
           }
         }
       });
     } else {
-      $("#provider, #state").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
+      $("#provider, #app_time").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
     }
   });
   //Change in provider dropdown list will trigger this function and
@@ -36,14 +36,14 @@ $(document).ready(function() {
         success:function(response) {
           //var resp = $.trim(response);
           if(response != '') {
-            $("#state").removeAttr('disabled','disabled').html(response);
+            $("#app_time").removeAttr('disabled','disabled').html(response);
           } else {
-            $("#state").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
+            $("#app_time").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
           }
         }
       });
     } else {
-      $("#state").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
+      $("#app_time").attr('disabled','disabled').html("<option value=''>------- Select --------</option>");
     }
   });
   //Change in state dropdown list will trigger this function and

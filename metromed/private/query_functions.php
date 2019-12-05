@@ -71,12 +71,13 @@
     $user_id = $appointment['user_id'];
     $doc_id = $appointment['doc_id'];
     $app_date = $appointment['app_date'];
+    $app_time = $appointment['app_time'];
 
 
-    $query = "INSERT INTO appointment (user_id, doc_id, app_dt) VALUES (?, ?, ?)";
+    $query = "INSERT INTO appointment (user_id, doc_id, app_dt, app_time) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($db, $query);
     // echo $query;
-    $bind = mysqli_stmt_bind_param($stmt, 'sss', $user_id, $doc_id, $app_date);
+    $bind = mysqli_stmt_bind_param($stmt, 'sssi', $user_id, $doc_id, $app_date, $app_time);
     // echo $bind;
     mysqli_stmt_execute($stmt);
 
