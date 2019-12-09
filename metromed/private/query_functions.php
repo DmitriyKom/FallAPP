@@ -88,6 +88,18 @@
     mysqli_close($db);
   }
 
+  function find_appointments_by_user($id) {
+    global $db;
+
+    $sql = 'SELECT * FROM appointment ';
+    $sql .= 'WHERE user_id="' . $id . '" ORDER BY app_time; ';
+    $result = mysqli_query($db, $sql);
+    // echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
   function find_user_by_id($id) {
     global $db;
 
