@@ -333,7 +333,101 @@ INSERT INTO provider (
     )
 VALUES((SELECT max(user_id) FROM user_info),('1'));
 
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("Charles","Stricker","Robert","145 west 29th street suite 451","st. paul","mn",55012,7634434204,"1988-12-09",'10','10');
 
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('cstricker@metromed.services', '1234', '2', '1');
+
+INSERT INTO provider (
+  user_id,
+  specialty
+    )
+VALUES((SELECT max(user_id) FROM user_info),('3'));
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("Marie","Trevino","May","145 west 29th street suite 451","st. paul","mn",55012,7634434205,"1999-01-01",'10','10');
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('mtrevino@metromed.services', '1234', '2', '1');
+
+INSERT INTO provider (
+  user_id,
+  specialty
+    )
+VALUES((SELECT max(user_id) FROM user_info),('4'));
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("Rick","Martin","","145 west 29th street suite 451","st. paul","mn",55012,7634434206,"1965-11-20",'10','10');
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('rmartin@metromed.services', '1234', '2', '1');
+
+INSERT INTO provider (
+  user_id,
+  specialty
+    )
+VALUES((SELECT max(user_id) FROM user_info),('5'));
+
+INSERT INTO user_info(
+    f_name,
+    l_name,
+    m_name,
+    address,
+    city,
+    state,
+    zip,
+    phone_number,
+    dob,
+    ins_id,
+    policy_number
+)
+VALUES("Ann","Harlow","Greta","145 west 29th street suite 451","st. paul","mn",55012,7634434207,"1989-02-01",'10','10');
+
+INSERT INTO `user`(`email`,`password`,`role`,`enabled`)
+VALUES ('aharlow@metromed.services', '1234', '2', '1');
+
+INSERT INTO provider (
+  user_id,
+  specialty
+    )
+VALUES((SELECT max(user_id) FROM user_info),('5'));
 
 INSERT INTO appointment (user_id,doc_id,app_dt,app_time)
 VALUES ('1', '1', '2019-12-31', '11');

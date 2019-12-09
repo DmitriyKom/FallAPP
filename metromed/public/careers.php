@@ -21,7 +21,7 @@
         </div>
 	       <div class="row">
           <div class="col-6">
-            <h4><strong>Find Your career with us</strong></h4>
+            <h4><strong>Find your career with us</strong></h4>
             <h5>We’re a coordinated health care organization that includes primary care services and a clinic.
 				        We offer jobs and careers for physicians, nurses and other health care professionals. Administrative
         				positions include those in business and billing operations, technology, and customer service.
