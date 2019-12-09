@@ -24,7 +24,7 @@ if (isset($_POST['service_id'])) {
     echo '<option value="">No Record</option>';
   }
 } else if(isset($_POST['provider_id'])) {
-  $full_calendar = range(6,18);
+  $full_calendar = range(8,18);
   $sql = 'SELECT a.* FROM appointment a, user_info i ';
   $sql .= 'WHERE i.user_id="' . mysqli_real_escape_string($db,$_POST['provider_id']) . '" AND app_dt="' . mysqli_real_escape_string($db,$_POST['date']) . '" ORDER BY app_time;';
   $res = mysqli_query($db, $sql);
