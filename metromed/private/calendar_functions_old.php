@@ -17,14 +17,7 @@ function build_calendar($month, $year) {
 
   // Current date
 
-
-
-
-
-
   $dateToday = date('Y-m-d');
-
-
 
   $calendar = "<table class='table table-bordered'>";
   $calendar .= "<center><h2>$monthName $year</h2>";
@@ -44,17 +37,9 @@ function build_calendar($month, $year) {
     $calendar .= "<th class='header'>$day</th>";
   }
 
-
-
-
-
   $currentDay = 1;
 
   $calendar .= "</tr><tr>";
-
-
-
-
 
   if($dayOfWeek > 0) {
     for ($i=0; $i < $dayOfWeek; $i++) {
@@ -62,7 +47,6 @@ function build_calendar($month, $year) {
 
     }
   }
-
 
   $month = str_pad($month,2,"0",STR_PAD_LEFT);
 

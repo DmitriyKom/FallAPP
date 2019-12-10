@@ -1,7 +1,7 @@
 <?php
 
   require_once('../../private/initialize.php');
-  require_once('../../private/calendar_function.php');
+  require_once('../../private/calendar_functions.php');
 
   include(SHARED_PATH . '/metromed_header.php');
 
@@ -62,8 +62,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
-
       <?php
         date_default_timezone_set("America/Menominee");
         $dateComponents = getdate();
@@ -74,9 +72,8 @@
           $month = $dateComponents['mon'];
           $year = $dateComponents['year'];
         }
-        echo build_calendar_test($month, $year);
+        echo build_calendar($month, $year);
       ?>
-
     </div>
   </div>
 </div>
