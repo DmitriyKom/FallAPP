@@ -29,7 +29,7 @@ if(is_post()) {
   $user['email'] = $_POST['email'] ?? '';
 
   $result = update_user($user);
-  redirect_to(url_for('/userprofile.php'));
+  redirect_to(url_for('/userprofile/index.php'));
 
 } else {
 
@@ -86,7 +86,7 @@ if(is_post()) {
 
   <div class="page-content">
 
-    <form class="ml-3" action="<?php echo url_for('userprofile.php?user_id=' . h(u($u_id))); ?>" method="post">
+    <form class="ml-3" action="<?php echo url_for('userprofile/index.php?user_id=' . h(u($u_id))); ?>" method="post">
       <input type="hidden" id="user_id" name="user_id" value="<?php echo $id; ?>">
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -109,7 +109,7 @@ if(is_post()) {
         </div>
         <div class="form-group col-md-6">
           <label for="phone_number">Phone Number</label>
-          <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone" value="<?php echo phone_number_format(h($user_id['phone_number'])); ?>">
+          <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone" value="<?php echo h($user_id['phone_number']); ?>">
         </div>
       </div>
       <div class="form-group">
