@@ -21,7 +21,7 @@ $page_title = 'View Patient';
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/administrator/patients/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/administrator/patients/show_patients.php'); ?>">&laquo; Back to List</a>
 
   <div class="subject show">
 

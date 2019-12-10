@@ -8,6 +8,8 @@ if($_SESSION['role'] != '3'){
   redirect_to(url_for('/index.php'));
 }
 
+redirect_to(url_for('/administrator/patients/show_administrators.php'));
+
   $patient_set = find_all_patients();
   // echo $patient_set;
 ?>
